@@ -1,4 +1,5 @@
 import React from "react";
-import { LandingPage } from "./landing";
+import { LandingPage, LandingPageProps } from "./landing";
+import { PageProps } from "./types";
 
-export default () => <LandingPage />;
+export default (props: PageProps<LandingPageProps>) => <LandingPage {...props} />;
