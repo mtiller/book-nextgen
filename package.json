@@ -1,0 +1,36 @@
+{
+    "dependencies": {
+        "@zeit/next-typescript": "^1.1.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.2.0",
+        "next": "^7.0.2",
+        "react": "^16.7.0-alpha.2",
+        "react-dom": "^16.7.0-alpha.2",
+        "typescript": "^3.2.1"
+    },
+    "name": "@xogeny/book-nextgen",
+    "description": "A book generator that is based on Next.js and Blueprint.js",
+    "version": "0.1.0",
+    "main": "lib/index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "export": "next export",
+        "start": "next start",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xogeny/book-nextgen.git"
+    },
+    "keywords": [
+        "Sphinix"
+    ],
+    "author": "Michael M. Tiller",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/xogeny/book-nextgen/issues"
+    },
+    "homepage": "https://github.com/xogeny/book-nextgen#readme"
+}
