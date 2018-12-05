@@ -5,6 +5,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.2.0",
+        "@types/next": "^7.0.5",
         "@zeit/next-css": "^1.0.1",
         "next": "^7.0.2",
         "react": "^16.7.0-alpha.2",

@@ -1,10 +1,8 @@
 import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
-import { PageProps } from "./types";
+import { PageProps, SphinxJsonData } from "./types";
 
-export interface LandingPageProps {}
-
-export const LandingPage = (props: PageProps<LandingPageProps>) => {
+export const LandingPage = (props: SphinxJsonData) => {
     return (
         <div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
@@ -13,7 +11,7 @@ export const LandingPage = (props: PageProps<LandingPageProps>) => {
             </div>
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, flexGrow: 6 }}>
-                    Foo
+                    <div dangerouslySetInnerHTML={{ __html: props.body }} />
                 </Card>
                 <div style={{ flexGrow: 4 }}>
                     <Card elevation={Elevation.TWO} style={{ margin: 10 }}>

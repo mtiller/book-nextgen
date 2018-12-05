@@ -1,3 +1,5 @@
 .next
 out
 node_modules
+json
+static/lunr.json
