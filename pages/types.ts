@@ -4,6 +4,11 @@ export interface PageProps<Q> {
     router: RouterProps<Q>;
 }
 
+export interface Link {
+    link: string;
+    title: string;
+}
+
 export interface SphinxJsonData {
     body: string;
     alabaster_version: string;
@@ -13,12 +18,12 @@ export interface SphinxJsonData {
     customsidebar: null;
     metatags: string;
     current_page_name: string;
-    next: { link: string; title: string };
+    next: Link | null;
     rellinks: Array<[string, string, string, string]>;
     meta: {};
-    parents: Array<void>;
+    parents: Array<Link>;
     sidebars: null;
     toc: string;
-    prev: { link: string; title: string };
+    prev: Link | null;
     page_source_suffix: string;
 }
