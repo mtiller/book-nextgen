@@ -39,14 +39,17 @@ module.exports = withCSS(
     withTypescript({
         useFileSystemPublicRoutes: false,
         exportPathMap: async defaultPathMap => {
+            const globalData = getGlobalData();
             const files = await getPages();
             const ret = {};
             files.forEach(file => {
+                const fjson = getData(file);
+                const query = { fjson: fjson, global: globalData };
                 if (file === "index.fjson") {
-                    ret["/"] = { page: "/", query: { fjson: getData(file), global: getGlobalData() } };
+                    ret["/"] = { page: "/", query: query };
                 } else {
                     const route = `/${file.slice(0, file.length - 6)}/`;
-                    ret[route] = { page: "/pageview", query: { fjson: getData(file), global: getGlobalData() } };
+                    ret[route] = { page: "/pageview", query: query };
                 }
             });
             // console.log("ret = ", JSON.stringify(ret));

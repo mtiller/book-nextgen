@@ -11,12 +11,12 @@ export interface Link {
 
 export interface SphinxJsonData {
     body: string;
-    alabaster_version: string;
+    // alabaster_version: string;
     display_toc: boolean;
     title: string;
     sourcename: string;
     customsidebar: null;
-    metatags: string;
+    // metatags: string;
     current_page_name: string;
     next: Link | null;
     rellinks: Array<[string, string, string, string]>;
@@ -25,5 +25,13 @@ export interface SphinxJsonData {
     sidebars: null;
     toc: string;
     prev: Link | null;
-    page_source_suffix: string;
+    // page_source_suffix: string;
+}
+
+export interface PageData extends SphinxJsonData {
+    global: GlobalData;
+}
+
+export interface GlobalData {
+    release: string;
 }

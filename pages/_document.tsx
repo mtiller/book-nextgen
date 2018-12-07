@@ -1,11 +1,20 @@
+import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
-import { getInitialProps } from "./data";
+import { getInitialProps, parseGlobal } from "./data";
+import { PageData } from "./types";
 
-export default class MyDocument extends Document {
+export default class MyDocument extends Document<PageData> {
     static async getInitialProps(ctx) {
-        return getInitialProps(ctx);
-        // const initialProps = await Document.getInitialProps(ctx);
-        // return { ...initialProps };
+        const initialProps = await Document.getInitialProps(ctx);
+        return { ...initialProps };
+        // Doing this causes problems because sometimes "global" is there
+        // and sometimes it isn't.  I don't know if this is run only "server
+        // side" or if it is also done client side.  But one option could be
+        // to read the file directly or figure out how to properly inject
+        // the query field *consistently* for documents.
+
+        // const g = parseGlobal(ctx);
+        // return { ...initialProps, global: g };
     }
 
     render() {
@@ -28,7 +37,7 @@ export default class MyDocument extends Document {
                     />
                     <meta property="og:site_name" content="Modelica by Example" />
 
-                    <meta name="description" content={this.props.global.release} />
+                    {/* <meta name="description" content={this.props.global.release} /> */}
 
                     <meta property="article:author" content="https://modelica.university/about/" />
                     <meta property="article:tag" content="Modelica" />

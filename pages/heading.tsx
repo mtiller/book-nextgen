@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, AnchorButton, Button } from "@blueprintjs/core";
-import { SphinxJsonData } from "./types";
+import { PageData } from "./types";
 
 export const Heading2 = (props: any) => {
     return (
@@ -9,7 +9,7 @@ export const Heading2 = (props: any) => {
         </div>
     );
 };
-export const Heading = (props: SphinxJsonData) => {
+export const Heading = (props: PageData) => {
     return (
         <Navbar style={{ display: "flex", justifyContent: "space-between" }} fixedToTop={true}>
             <Navbar.Group>

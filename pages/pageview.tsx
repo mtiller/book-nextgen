@@ -1,10 +1,11 @@
 import React from "react";
-import { SphinxJsonData } from "./types";
+import { NextContext } from "next";
+import { PageData } from "./types";
 import { getInitialProps } from "./data";
 import { Heading } from "./heading";
 import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
 
-const Parents = (props: SphinxJsonData) => {
+const Parents = (props: PageData) => {
     const parents: IBreadcrumbProps[] = props.parents.map(parent => ({ href: parent.link, text: parent.title }));
     const breadcrumbs: IBreadcrumbProps[] = [{ text: "Home", href: "/" }, ...parents, { text: props.title }];
     return (
@@ -14,10 +15,13 @@ const Parents = (props: SphinxJsonData) => {
     );
 };
 
-export default class PageView extends React.Component<SphinxJsonData> {
-    static getInitialProps = getInitialProps;
+export default class PageView extends React.Component<PageData> {
+    static getInitialProps(context: NextContext) {
+        return getInitialProps(context);
+    }
     render() {
         const props = this.props;
+        const body = props.body;
 
         return (
             <div>
@@ -31,6 +35,7 @@ export default class PageView extends React.Component<SphinxJsonData> {
                 <div style={{ margin: 20 }}>
                     <div dangerouslySetInnerHTML={{ __html: props.body }} />
                 </div>
+                <pre>{body}</pre>
                 <pre>{JSON.stringify({ ...props, url: null }, null, 4)}</pre>
             </div>
         );

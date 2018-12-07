@@ -1,12 +1,12 @@
 import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
-import { PageProps, SphinxJsonData } from "./types";
+import { PageProps, PageData } from "./types";
 
-export const LandingPage = (props: SphinxJsonData) => {
+export const LandingPage = (props: PageData) => {
     return (
         <div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
-                <img src="http://book.xogeny.com/_static/images/TitleHeading.png" />
+                <img src="/static/images/TitleHeading.png" />
                 <h3 style={{ marginTop: 0 }}>by Dr. Michael M. Tiller</h3>
             </div>
             <div style={{ display: "flex" }}>
