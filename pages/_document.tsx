@@ -37,7 +37,7 @@ export default class MyDocument extends Document<PageData> {
                     />
                     <meta property="og:site_name" content="Modelica by Example" />
 
-                    {/* <meta name="description" content={this.props.global.release} /> */}
+                    <meta name="description" content="Modelica by Example" />
 
                     <meta property="article:author" content="https://modelica.university/about/" />
                     <meta property="article:tag" content="Modelica" />
