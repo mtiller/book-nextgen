@@ -1,11 +1,12 @@
 import React from "react";
 import { LandingPage } from "./landing";
 import { PageData } from "./types";
-import { NextContext } from "next";
-import { getInitialProps } from "./data";
+import { getInitialPageProps } from "./data";
 
 export default class Index extends React.Component<PageData, {}> {
-    static getInitialProps = getInitialProps;
+    static getInitialProps(context) {
+        return getInitialPageProps(context);
+    }
     render() {
         return <LandingPage {...this.props} />;
     }

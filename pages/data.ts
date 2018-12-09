@@ -1,5 +1,14 @@
 import { NextContext } from "next";
-import { PageData, SphinxJsonData, GlobalData } from "./types";
+import {
+    PageData,
+    IndexPageData,
+    SearchPageData,
+    GlobalData,
+    SphinxPage,
+    IndexData,
+    IndexNode,
+    SearchData,
+} from "./types";
 
 // const fjsonPlaceholder: SphinxJsonData = {
 //     body: `<div>Placeholder Body</div>`,
@@ -17,17 +26,28 @@ import { PageData, SphinxJsonData, GlobalData } from "./types";
 //     prev: null,
 // };
 
-export async function getInitialProps(context: NextContext): Promise<PageData> {
-    if (!context.query.fjson) throw new Error("Missing fjson field in " + JSON.stringify(context.query));
-    const fjson = context.query.fjson;
-    const arg = typeof fjson === "string" ? fjson : fjson[0];
-    const base = JSON.parse(arg);
-    return { ...base, global: parseGlobal(context) };
+export async function getInitialPageProps(context: NextContext): Promise<PageData> {
+    const page = parseFJSon<SphinxPage>(context.query, "page");
+    const global = parseFJSon<GlobalData>(context.query, "global");
+    return { page: page, global: global };
 }
 
-export function parseGlobal(context: NextContext): GlobalData {
-    const g = context.query.global;
-    const globalArg = typeof g === "string" ? g : g[0];
-    const globalData = JSON.parse(globalArg);
-    return globalData as GlobalData;
+export async function getInitialIndexProps(context: NextContext): Promise<IndexPageData> {
+    const index = parseFJSon<IndexData>(context.query, "index");
+    const global = parseFJSon<GlobalData>(context.query, "global");
+    return { index: index, global: global };
+}
+
+export async function getInitialSearchProps(context: NextContext): Promise<SearchPageData> {
+    const search = parseFJSon<SearchData>(context.query, "search");
+    const global = parseFJSon<GlobalData>(context.query, "global");
+    return { search: search, global: global };
+}
+
+function parseFJSon<P>(query: Record<string, string | string[]>, field: string): P {
+    if (!query[field]) throw new Error(`Missing page '${field}' in ${JSON.stringify(query)}`);
+    const fjson = query[field];
+    const arg = typeof fjson === "string" ? fjson : fjson[0];
+    const data = JSON.parse(arg) as P;
+    return data;
 }

@@ -5,8 +5,13 @@ import { PageData } from "./types";
 
 export default class MyDocument extends Document<PageData> {
     static async getInitialProps(ctx) {
+        let description = "Modelica by Example";
+        if (!ctx.req) {
+            const g = parseGlobal(ctx);
+            description = g.release;
+        }
         const initialProps = await Document.getInitialProps(ctx);
-        return { ...initialProps };
+        return { ...initialProps, description: description };
         // Doing this causes problems because sometimes "global" is there
         // and sometimes it isn't.  I don't know if this is run only "server
         // side" or if it is also done client side.  But one option could be

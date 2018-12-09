@@ -4,34 +4,75 @@ export interface PageProps<Q> {
     router: RouterProps<Q>;
 }
 
-export interface Link {
+export interface SphinxLink {
     link: string;
     title: string;
 }
 
-export interface SphinxJsonData {
-    body: string;
-    // alabaster_version: string;
-    display_toc: boolean;
+export interface SphinxPage {
     title: string;
-    sourcename: string;
-    customsidebar: null;
-    // metatags: string;
-    current_page_name: string;
-    next: Link | null;
-    rellinks: Array<[string, string, string, string]>;
-    meta: {};
-    parents: Array<Link>;
-    sidebars: null;
     toc: string;
-    prev: Link | null;
-    // page_source_suffix: string;
+    body: string;
+    parents: Array<SphinxLink> | null;
+    prev: SphinxLink | null;
+    next: SphinxLink | null;
+    meta: {};
+    current_page_name: string;
+    metatags: string;
+    sourcename: string;
+    display_toc: boolean;
+    sidebars: null;
+    page_source_suffix: string;
 }
 
-export interface PageData extends SphinxJsonData {
+// This is in globalcontext.json
+export interface GlobalData {
+    shorttitle: string; // Includes git-describe
+    docstitle: string; // ditto
+    master_doc: string; // index
+    copyright: string;
+    project: string; // true title
+    version: string; // version number
+    release: string; // git-describe
+    sphinx_version: string;
+}
+
+export interface IndexNode {
+    category: string;
+    self: string[];
+    children: IndexNode[];
+}
+
+// This is in genindex.fjson
+export interface IndexData {
+    counts: number[];
+    entries: IndexNode[];
+}
+
+// This is in searchindex.json
+export interface SearchData {
+    envversion: number;
+    terms: { [term: string]: number | number[] };
+    objtypes: {};
+    docnames: string[];
+    objnames: {};
+    filenames: string[];
+    titles: string[];
+    objects: {};
+    titleterms: { [term: string]: number | number[] };
+}
+
+export interface PageData {
+    page: SphinxPage;
     global: GlobalData;
 }
 
-export interface GlobalData {
-    release: string;
+export interface IndexPageData {
+    index: IndexData;
+    global: GlobalData;
+}
+
+export interface SearchPageData {
+    search: SearchData;
+    global: GlobalData;
 }

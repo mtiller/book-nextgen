@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
-import { PageProps, PageData } from "./types";
+import { PageData } from "./types";
 
 export const LandingPage = (props: PageData) => {
     return (
@@ -11,7 +11,7 @@ export const LandingPage = (props: PageData) => {
             </div>
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, flexGrow: 6 }}>
-                    <div dangerouslySetInnerHTML={{ __html: props.body }} />
+                    <div dangerouslySetInnerHTML={{ __html: props.page.body }} />
                 </Card>
                 <div style={{ flexGrow: 4 }}>
                     <Card elevation={Elevation.TWO} style={{ margin: 10 }}>
