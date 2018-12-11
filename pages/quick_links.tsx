@@ -109,3 +109,31 @@ export const FAQs = (props: {}) => {
         </div>
     );
 };
+
+export const BuyBook = (props: {}) => {
+    return (
+        <div>
+            <div>
+                <div className="pull-right">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" defaultValue="_s-xclick" />
+                        <input type="hidden" name="hosted_button_id" defaultValue="43ECRF7WVKHFN" />
+                        <input type="hidden" name="return" defaultValue="/_static/thanks.html" />
+                        <input
+                            type="image"
+                            name="submit"
+                            alt="PayPal - The safer, easier way to pay online!"
+                            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif"
+                        />
+                        <img width={1} height={1} src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+                    </form>
+                </div>
+                <p style={{ minWidth: "100%", width: 0 }}>
+                    You can purchase both ePub and PDF versions of the book in either letter or A4 format. Once you buy
+                    the book, you will be sent links to download the electronic versions. As new versions of the book
+                    become available, you will be sent updated links to the latest electronic versions.
+                </p>
+            </div>
+        </div>
+    );
+};

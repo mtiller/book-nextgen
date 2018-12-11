@@ -1,5 +1,19 @@
 import { RouterProps } from "next/router";
 
+export interface Sponsors {
+    goldSponsors: string[];
+    silverSponsors: string[];
+    bronzeSponsors: string[];
+    sponsorData: { [sponsor: string]: SponsorData };
+}
+
+export interface SponsorData {
+    name: string;
+    profile: string;
+    link: string;
+    logo: string;
+}
+
 export interface PageProps<Q> {
     router: RouterProps<Q>;
 }
@@ -65,6 +79,7 @@ export interface SearchData {
 export interface PageData {
     page: SphinxPage;
     global: GlobalData;
+    sponsors: Sponsors;
 }
 
 export interface IndexPageData {

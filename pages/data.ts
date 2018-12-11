@@ -6,8 +6,8 @@ import {
     GlobalData,
     SphinxPage,
     IndexData,
-    IndexNode,
     SearchData,
+    Sponsors,
 } from "./types";
 
 // const fjsonPlaceholder: SphinxJsonData = {
@@ -29,7 +29,8 @@ import {
 export async function getInitialPageProps(context: NextContext): Promise<PageData> {
     const page = parseFJSon<SphinxPage>(context.query, "page");
     const global = parseFJSon<GlobalData>(context.query, "global");
-    return { page: page, global: global };
+    const sponsors = parseFJSon<Sponsors>(context.query, "sponsors");
+    return { page: page, global: global, sponsors: sponsors };
 }
 
 export async function getInitialIndexProps(context: NextContext): Promise<IndexPageData> {

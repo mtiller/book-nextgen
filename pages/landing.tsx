@@ -2,11 +2,12 @@ import React from "react";
 import { Card, Elevation, Collapse } from "@blueprintjs/core";
 import { PageData } from "./types";
 import { Choices, Choice } from "./choices";
-import { MailingList, FAQs } from "./quick_links";
+import { MailingList, FAQs, BuyBook } from "./quick_links";
+import { SponsorView } from "./sponsors";
 
 const faqs: Choice[] = [
     { title: "Sign up for mailing list", contents: <MailingList /> },
-    { title: "Purchase eBook", contents: <span>Foo</span> },
+    { title: "Purchase eBook", contents: <BuyBook /> },
     { title: "FAQs", contents: <FAQs /> },
 ];
 
@@ -26,10 +27,13 @@ export const LandingPage = (props: PageData) => {
                         <Choices faqs={faqs} />
                     </Card>
                     <Card elevation={Elevation.TWO} style={{ margin: 10 }}>
-                        Bar
+                        <SponsorView sponsors={props.sponsors} />
                     </Card>
                 </div>
             </div>
+            <p style={{ float: "right", fontSize: "75%", color: "#888" }}>
+                <span className="metadata">{props.global.release}</span>
+            </p>
         </div>
     );
 };

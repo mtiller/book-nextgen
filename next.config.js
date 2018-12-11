@@ -97,6 +97,7 @@ module.exports = withCSS(
         useFileSystemPublicRoutes: false,
         exportPathMap: async defaultPathMap => {
             const globalData = await getData("globalcontext.json");
+            const sponsorData = await getData("_static/sponsors/sponsors.json");
             const files = await getPages();
             const ret = {};
             const work = files.map(async file => {
@@ -104,7 +105,7 @@ module.exports = withCSS(
                 console.log("file = ", file);
                 switch (file) {
                     case "index.fjson": {
-                        const query = { page: fjson, global: globalData };
+                        const query = { page: fjson, global: globalData, sponsors: sponsorData };
                         ret["/"] = { page: "/", query: query };
                         break;
                     }
@@ -117,17 +118,17 @@ module.exports = withCSS(
                             counts: raw["genindexcounts"],
                             entries: normal,
                         });
-                        const query = { index: text, global: globalData };
+                        const query = { index: text, global: globalData, sponsors: sponsorData };
                         ret["/genindex"] = { page: "/indexview", query: query };
                         break;
                     }
                     case "searchindex.fjson": {
-                        const query = { search: fjson, global: globalData };
+                        const query = { search: fjson, global: globalData, sponsors: sponsorData };
                         ret["/search"] = { page: "/searchview", query: query };
                         break;
                     }
                     default: {
-                        const query = { page: fjson, global: globalData };
+                        const query = { page: fjson, global: globalData, sponsors: sponsorData };
                         const route = `/${file.slice(0, file.length - 6)}/`;
                         ret[route] = { page: "/pageview", query: query };
                         break;
