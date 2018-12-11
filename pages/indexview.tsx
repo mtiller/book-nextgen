@@ -3,6 +3,7 @@ import { IndexPageData, IndexNode } from "./types";
 import { NextContext } from "next";
 import { getInitialIndexProps } from "./data";
 import { Heading } from "./heading";
+import { Index } from "lunr";
 
 /**
  * Count the total number of children (leaves) in this tree
@@ -123,9 +124,10 @@ export default class IndexView extends React.Component<IndexPageData> {
         const index = this.props.index;
         const entries = index.entries;
         const columns = formColumns(entries);
+        const search = Index.load(this.props.serializedIndex);
         return (
             <div>
-                <Heading next={null} prev={null} />
+                <Heading next={null} prev={null} parent={null} search={search} titles={this.props.titles} />
                 <div style={{ margin: 20 }}>
                     <h1>Index</h1>
                     {/* <pre>{JSON.stringify(columns.sizes)}</pre> */}

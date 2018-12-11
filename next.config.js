@@ -98,14 +98,32 @@ module.exports = withCSS(
         exportPathMap: async defaultPathMap => {
             const globalData = await getData("globalcontext.json");
             const sponsorData = await getData("_static/sponsors/sponsors.json");
+            const lunrData = await fs.readFileSync("./static/lunr.json").toString();
+            const titles = {};
             const files = await getPages();
             const ret = {};
+            await Promise.all(
+                files.map(async file => {
+                    const fjson = JSON.parse(await getData(file));
+                    const route = `/${file.slice(0, file.length - 6)}/`;
+                    console.log(`Title for ${route} is ${fjson.title}`);
+                    titles[route] = fjson.title;
+                }),
+            );
+            const titleData = JSON.stringify(titles);
+
             const work = files.map(async file => {
                 const fjson = await getData(file);
                 console.log("file = ", file);
                 switch (file) {
                     case "index.fjson": {
-                        const query = { page: fjson, global: globalData, sponsors: sponsorData };
+                        const query = {
+                            page: fjson,
+                            global: globalData,
+                            sponsors: sponsorData,
+                            searchIndex: lunrData,
+                            titles: titleData,
+                        };
                         ret["/"] = { page: "/", query: query };
                         break;
                     }
@@ -118,17 +136,24 @@ module.exports = withCSS(
                             counts: raw["genindexcounts"],
                             entries: normal,
                         });
-                        const query = { index: text, global: globalData, sponsors: sponsorData };
+                        const query = {
+                            index: text,
+                            global: globalData,
+                            sponsors: sponsorData,
+                            searchIndex: lunrData,
+                            titles: titleData,
+                        };
                         ret["/genindex"] = { page: "/indexview", query: query };
                         break;
                     }
-                    case "searchindex.fjson": {
-                        const query = { search: fjson, global: globalData, sponsors: sponsorData };
-                        ret["/search"] = { page: "/searchview", query: query };
-                        break;
-                    }
                     default: {
-                        const query = { page: fjson, global: globalData, sponsors: sponsorData };
+                        const query = {
+                            page: fjson,
+                            global: globalData,
+                            sponsors: sponsorData,
+                            searchIndex: lunrData,
+                            titles: titleData,
+                        };
                         const route = `/${file.slice(0, file.length - 6)}/`;
                         ret[route] = { page: "/pageview", query: query };
                         break;

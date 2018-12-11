@@ -4,6 +4,7 @@ import { PageData } from "./types";
 import { getInitialPageProps } from "./data";
 import { Heading } from "./heading";
 import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
+import { Index } from "lunr";
 
 const Parents = (props: PageData) => {
     const parents: IBreadcrumbProps[] = props.page.parents.map(parent => ({ href: parent.link, text: parent.title }));
@@ -22,10 +23,17 @@ export default class PageView extends React.Component<PageData> {
     render() {
         const props = this.props;
         const body = props.page.body;
+        const search = Index.load(this.props.serializedIndex);
 
         return (
             <div>
-                <Heading next={props.page.next} prev={props.page.prev} />
+                <Heading
+                    next={props.page.next}
+                    prev={props.page.prev}
+                    parent={props.page.parents.length > 0 ? props.page.parents[0] : null}
+                    search={search}
+                    titles={props.titles}
+                />
                 <Parents {...props} />
 
                 <div style={{ margin: 20 }}>

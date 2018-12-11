@@ -80,14 +80,13 @@ export interface PageData {
     page: SphinxPage;
     global: GlobalData;
     sponsors: Sponsors;
+    serializedIndex: {};
+    titles: { [href: string]: string };
 }
 
 export interface IndexPageData {
     index: IndexData;
     global: GlobalData;
-}
-
-export interface SearchPageData {
-    search: SearchData;
-    global: GlobalData;
+    serializedIndex: {};
+    titles: { [href: string]: string };
 }

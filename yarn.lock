@@ -806,6 +806,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/lunr@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/@types/lunr/-/lunr-2.3.0.tgz#4e35ea11051cf0d4a738b046431d5a22bceb6819"
+  integrity sha512-NZ+gh501oQAOaqK6RkgShVZE3Z1nXIqzXeS+YIoekbM5hmnI1EWK+hEauXXtsCUAwqQP6/V3pCYKNW7FAUm59A==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -3469,6 +3474,11 @@ lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.3:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+lunr@2.1.4:
+  version "2.1.4"
+  resolved "https://registry.npmjs.org/lunr/-/lunr-2.1.4.tgz#52be0a9d068321909a7fb46575620e24417d5591"
+  integrity sha512-7kj5e+Tnyw+pvdOVWkx38Dic//doyVGrLtDAUb+2LK3Hc5Cy0RkR3DslNWrBh30LDFFDm8qGLeSwV9XJ6FcTpg==
 
 make-dir@^1.0.0:
   version "1.3.0"
