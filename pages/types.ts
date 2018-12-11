@@ -1,5 +1,32 @@
 import { RouterProps } from "next/router";
 
+export type Injector = (
+    node: ParsedNode,
+    children: ParsedNode[],
+    index: number,
+    def: (node: ParsedNode, children: ParsedNode[], index: number) => JSX.Element,
+) => JSX.Element | null;
+
+export interface TagNode {
+    type: "tag";
+    name: string;
+    attribs: { [attr: string]: string };
+    children: Node[];
+    next: Node | null;
+    parent: Node | null;
+    prev: Node | null;
+}
+
+export interface TextNode {
+    type: "text";
+    data: string;
+    next: Node | null;
+    parent: Node | null;
+    prev: Node | null;
+}
+
+export type ParsedNode = TagNode | TextNode;
+
 export interface Sponsors {
     goldSponsors: string[];
     silverSponsors: string[];
