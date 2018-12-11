@@ -82,6 +82,7 @@ export interface PageData {
     sponsors: Sponsors;
     serializedIndex: {};
     titles: { [href: string]: string };
+    toc: string;
 }
 
 export interface IndexPageData {
@@ -89,4 +90,5 @@ export interface IndexPageData {
     global: GlobalData;
     serializedIndex: {};
     titles: { [href: string]: string };
+    toc: string;
 }

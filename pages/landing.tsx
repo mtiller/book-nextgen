@@ -4,6 +4,8 @@ import { PageData } from "./types";
 import { Choices, Choice } from "./choices";
 import { MailingList, FAQs, BuyBook } from "./quick_links";
 import { SponsorView } from "./sponsors";
+import { Index } from "lunr";
+import { SearchDialog } from "./search";
 
 const faqs: Choice[] = [
     { title: "Sign up for mailing list", contents: <MailingList /> },
@@ -12,6 +14,7 @@ const faqs: Choice[] = [
 ];
 
 export const LandingPage = (props: PageData) => {
+    const search = Index.load(props.serializedIndex);
     return (
         <div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
@@ -20,6 +23,9 @@ export const LandingPage = (props: PageData) => {
             </div>
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, width: "55vw" }}>
+                    <div style={{ float: "right" }}>
+                        <SearchDialog index={search} titles={props.titles} />
+                    </div>
                     <div dangerouslySetInnerHTML={{ __html: props.page.body }} />
                 </Card>
                 <div style={{ width: "45vw" }}>

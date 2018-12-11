@@ -127,7 +127,14 @@ export default class IndexView extends React.Component<IndexPageData> {
         const search = Index.load(this.props.serializedIndex);
         return (
             <div>
-                <Heading next={null} prev={null} parent={null} search={search} titles={this.props.titles} />
+                <Heading
+                    next={null}
+                    prev={null}
+                    parent={null}
+                    search={search}
+                    titles={this.props.titles}
+                    toc={this.props.toc}
+                />
                 <div style={{ margin: 20 }}>
                     <h1>Index</h1>
                     {/* <pre>{JSON.stringify(columns.sizes)}</pre> */}

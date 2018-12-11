@@ -55,7 +55,10 @@ function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
-const imagesRE = new RegExp(escapeRegExp("../../../_images/"), "g");
+const imagesRE3 = new RegExp(escapeRegExp("../../../_images/"), "g");
+const imagesRE2 = new RegExp(escapeRegExp("../../_images/"), "g");
+
+const hrefRE = new RegExp(/href="/g);
 
 /**
  * This is run "server-side" (where the file system actually exists) and
@@ -66,7 +69,8 @@ const imagesRE = new RegExp(escapeRegExp("../../../_images/"), "g");
 async function getData(filename) {
     const raw = fs.readFileSync(path.join(__dirname, "json", filename));
     let str = raw.toString();
-    str = str.replace(imagesRE, "/static/_images/");
+    str = str.replace(imagesRE3, "/static/_images/");
+    str = str.replace(imagesRE2, "/static/_images/");
     if (runMath) {
         const obj = JSON.parse(str);
         if (obj.body) {
@@ -111,11 +115,16 @@ module.exports = withCSS(
                 }),
             );
             const titleData = JSON.stringify(titles);
+            let toc = JSON.parse(await getData("index.fjson")).body;
+            toc = toc.replace(hrefRE, `href="/`);
 
             const work = files.map(async file => {
                 const fjson = await getData(file);
                 console.log("file = ", file);
                 switch (file) {
+                    case "search.fjson": {
+                        break;
+                    }
                     case "index.fjson": {
                         const query = {
                             page: fjson,
@@ -123,6 +132,7 @@ module.exports = withCSS(
                             sponsors: sponsorData,
                             searchIndex: lunrData,
                             titles: titleData,
+                            toc: toc,
                         };
                         ret["/"] = { page: "/", query: query };
                         break;
@@ -142,6 +152,7 @@ module.exports = withCSS(
                             sponsors: sponsorData,
                             searchIndex: lunrData,
                             titles: titleData,
+                            toc: toc,
                         };
                         ret["/genindex"] = { page: "/indexview", query: query };
                         break;
@@ -153,6 +164,7 @@ module.exports = withCSS(
                             sponsors: sponsorData,
                             searchIndex: lunrData,
                             titles: titleData,
+                            toc: toc,
                         };
                         const route = `/${file.slice(0, file.length - 6)}/`;
                         ret[route] = { page: "/pageview", query: query };

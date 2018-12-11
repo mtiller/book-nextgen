@@ -33,6 +33,7 @@ export default class PageView extends React.Component<PageData> {
                     parent={props.page.parents.length > 0 ? props.page.parents[0] : null}
                     search={search}
                     titles={props.titles}
+                    toc={props.toc}
                 />
                 <Parents {...props} />
 

@@ -176,9 +176,14 @@ div .sphinxsidebar {
 
 /* Make permalinks look better */
 a.headerlink {
+    color: transparent;
     text-decoration: none;
     font-size: 17pt;
     font-style: normal;
+}
+
+a.headerlink:hover {
+    color: #106ba3;
 }
 
 .pull-right {
