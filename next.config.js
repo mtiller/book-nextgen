@@ -5,6 +5,9 @@ var fs = require("fs");
 var path = require("path");
 var glob = require("glob");
 
+const mjpage = require("mathjax-node-page/lib/main.js").mjpage;
+const runMath = true;
+
 function normalizeEntry(entry) {
     const category = entry[0];
     const children = entry[1].map(normalizeIndex);
@@ -42,15 +45,36 @@ function normalizeIndex(id) {
     }
 }
 
+function mathify(str) {
+    return new Promise((resolve, reject) => {
+        mjpage(str, { format: ["TeX"] }, { svg: true }, output => resolve(output));
+    });
+}
+
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+}
+
+const imagesRE = new RegExp(escapeRegExp("../../../_images/"), "g");
+
 /**
  * This is run "server-side" (where the file system actually exists) and
  * fetches the contexts of the local files.  This will then be passed
  * as "query strings" to the components so that they don't have to make any
  * network requests or read the file system (because they are "client-side").
  */
-function getData(filename) {
+async function getData(filename) {
     const raw = fs.readFileSync(path.join(__dirname, "json", filename));
-    return raw.toString();
+    let str = raw.toString();
+    str = str.replace(imagesRE, "/static/_images/");
+    if (runMath) {
+        const obj = JSON.parse(str);
+        if (obj.body) {
+            obj.body = await mathify(obj.body);
+        }
+        str = JSON.stringify(obj);
+    }
+    return str;
 }
 
 async function getPages() {
@@ -72,11 +96,11 @@ module.exports = withCSS(
     withTypescript({
         useFileSystemPublicRoutes: false,
         exportPathMap: async defaultPathMap => {
-            const globalData = getData("globalcontext.json");
+            const globalData = await getData("globalcontext.json");
             const files = await getPages();
             const ret = {};
-            files.forEach(file => {
-                const fjson = getData(file);
+            const work = files.map(async file => {
+                const fjson = await getData(file);
                 console.log("file = ", file);
                 switch (file) {
                     case "index.fjson": {
@@ -110,6 +134,7 @@ module.exports = withCSS(
                     }
                 }
             });
+            await Promise.all(work);
             Object.keys(ret).forEach(route => {
                 console.log(`${route} -> ${ret[route].page}`);
             });

@@ -31,8 +31,8 @@ export default class PageView extends React.Component<PageData> {
                 <div style={{ margin: 20 }}>
                     <div dangerouslySetInnerHTML={{ __html: props.page.body }} />
                 </div>
-                <pre>{body}</pre>
-                <pre>{JSON.stringify({ ...props, url: null }, null, 4)}</pre>
+                {/* <pre>{body}</pre>
+                <pre>{JSON.stringify({ ...props, url: null }, null, 4)}</pre> */}
             </div>
         );
     }

@@ -10,7 +10,7 @@ export const Heading = (props: HeadingProps) => {
     // const page = props.page;
     return (
         <div>
-            <Navbar style={{ display: "flex", justifyContent: "space-between" }} fixedToTop={true}>
+            <Navbar className="bp3-dark" style={{ display: "flex", justifyContent: "space-between" }} fixedToTop={true}>
                 <Navbar.Group>
                     <Button className="bp3-minimal" icon="menu" text="Menu" />
                     {props.prev && (
