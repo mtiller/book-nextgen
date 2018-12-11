@@ -137,12 +137,6 @@ export default class IndexView extends React.Component<IndexPageData> {
                 />
                 <div style={{ margin: 20 }}>
                     <h1>Index</h1>
-                    {/* <pre>{JSON.stringify(columns.sizes)}</pre> */}
-                    {/* <div style={{ display: "flex", flexDirection: "column", maxHeight: "60em", flexWrap: "wrap" }}>
-                        {entries.map((e, i) => (
-                            <RenderTree key={i} node={e} depth={0} />
-                        ))}
-                    </div> */}
                     <div style={{ display: "flex" }}>
                         {columns.nodes.map((column, i) => {
                             const size = column.reduce((p, c) => p + columns.sizes[c.category], 0);

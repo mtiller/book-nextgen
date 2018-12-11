@@ -47,7 +47,7 @@ function normalizeIndex(id) {
 
 function mathify(str) {
     return new Promise((resolve, reject) => {
-        mjpage(str, { format: ["TeX"] }, { svg: true }, output => resolve(output));
+        mjpage(str, { format: ["TeX"], fragment: true }, { svg: true }, output => resolve(output));
     });
 }
 
