@@ -5,3 +5,5 @@ json
 static/lunr.json
 static/_images
 static/sponsors
+
+yarn-error.log
