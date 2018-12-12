@@ -2,9 +2,9 @@ import { RouterProps } from "next/router";
 
 export type Injector = (
     node: ParsedNode,
-    children: ParsedNode[],
+    children: JSX.Element[],
     index: number,
-    def: (node: ParsedNode, children: ParsedNode[], index: number) => JSX.Element,
+    def: (node: ParsedNode, children: JSX.Element[], index: number) => JSX.Element,
 ) => JSX.Element | null;
 
 export interface TagNode {

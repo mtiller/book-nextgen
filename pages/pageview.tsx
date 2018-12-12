@@ -7,6 +7,7 @@ import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
 import { Index } from "lunr";
 import { Reactify } from "./reactify";
 import { interactiveInjector } from "./interactive";
+import { sourceViewInjector } from "./source";
 
 const YouAreHere = (props: PageData) => {
     const parents: IBreadcrumbProps[] = props.page.parents.map(parent => ({ href: parent.link, text: parent.title }));
@@ -40,7 +41,7 @@ export default class PageView extends React.Component<PageData> {
                 <YouAreHere {...props} />
 
                 <div style={{ margin: 20 }}>
-                    <Reactify html={props.page.body} injectors={[interactiveInjector]} />
+                    <Reactify html={props.page.body} injectors={[interactiveInjector, sourceViewInjector]} />
                 </div>
             </div>
         );
