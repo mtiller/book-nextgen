@@ -38,7 +38,7 @@
         "url": "git+https://github.com/xogeny/book-nextgen.git"
     },
     "keywords": [
-        "Sphinix"
+        "Sphinx"
     ],
     "author": "Michael M. Tiller",
     "license": "UNLICENSED",
