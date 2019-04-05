@@ -20,6 +20,7 @@
         "@types/recharts": "^1.1.16",
         "@zeit/next-css": "^1.0.1",
         "next": "^7.0.2",
+        "now": "^15.0.1",
         "react": "16.8.0",
         "react-dom": "16.8.0",
         "serve": "^10.1.1",
@@ -35,6 +36,8 @@
         "export": "next export",
         "start": "next start",
         "serve": "yarn build && yarn export && serve out",
+        "now-build": "next build && next export -o dist",
+        "upload": "now",
         "test": "jest"
     },
     "repository": {

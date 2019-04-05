@@ -39,6 +39,7 @@ export interface ModelData {
     vars: { [name: string]: VariableInfo };
 }
 
+
 export interface Results {
     title: string;
     params: { [key: string]: number };
@@ -47,6 +48,10 @@ export interface Results {
     stderr: string;
     trajectories: { [key: string]: number[] };
 }
+
+const billboardUrl = "https://mbe-api.modelica.university";
+// const billboardUrl = "http://localhost:3010";
+
 
 export const interactiveInjector: Injector = (node, children, index, def) => {
     if (node.type == "text") return null;
@@ -59,8 +64,6 @@ export const interactiveInjector: Injector = (node, children, index, def) => {
     return <Interactive key={index} id={id} content={def(node, children, index)} />;
 };
 
-// const billboardUrl = "http://mbe-api.modelica.university";
-const billboardUrl = "http://localhost:3010";
 const nav = SirenNav.create(billboardUrl, billboardUrl, undefined, { withCredentials: false });
 const Interactive = (props: { id: string; content: JSX.Element }) => {
     const [modelData, setModelData] = useState<null | Entity<ModelData>>(null);
@@ -133,7 +136,6 @@ const ParameterPanel = (props: ParameterPanelProps) => {
         d[key] = props.modelData.vars[key].start;
         return d;
     }, {});
-    console.log("defaults = ", defaults);
     const [mods, setMods] = useState(defaults);
     return (
         <Card
