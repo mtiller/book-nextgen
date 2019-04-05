@@ -3,7 +3,7 @@ import { Injector } from "./types";
 import { useState, useEffect } from "react";
 import { Entity } from "siren-types";
 import { SirenNav } from "siren-nav";
-import { Button } from "@blueprintjs/core";
+import { Button, Label, Classes, FormGroup, Intent, InputGroup, Card, Elevation } from "@blueprintjs/core";
 
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line, Legend, ResponsiveContainer } from "recharts";
 
@@ -27,8 +27,16 @@ export interface CaseData {
     vars: Array<VariableDetails>;
 }
 
+export interface VariableInfo {
+    variability: "parameter" | "continuous";
+    description: string;
+    start: string;
+}
+
 export interface ModelData {
     casedata: CaseData;
+    categories: { continuous: string[]; parameter: string[] };
+    vars: { [name: string]: VariableInfo };
 }
 
 export interface Results {
@@ -75,9 +83,9 @@ const Interactive = (props: { id: string; content: JSX.Element }) => {
         setModelData(data);
     };
 
-    const runSimulation = async () => {
+    const runSimulation = async (mods: { [key: string]: string }) => {
         setRunning(true);
-        const result = await modelNav.performAction("run", {}).asSiren<Results>();
+        const result = await modelNav.performAction("run", mods).asSiren<Results>();
         setResults(result);
         setRunning(false);
         console.log("Result = ", result);
@@ -92,24 +100,84 @@ const Interactive = (props: { id: string; content: JSX.Element }) => {
     }, [billboardUrl, props.id]);
     if (results == null) {
         return (
-            <div>
-                <div>{props.content}</div>
-                <Button disabled={running} onClick={() => runSimulation()}>
-                    Run
-                </Button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ flexGrow: 0 }}>{props.content}</div>
+                {modelData && (
+                    <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />
+                )}
             </div>
         );
     }
     return (
-        <div>
-            <h4 style={{ margin: 0 }}>{modelData.properties.casedata.title}</h4>
-            <div style={{ width: "100%", height: 400 }}>
-                <ResultsChart modelData={modelData.properties} results={results.properties} />
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ flexGrow: 0 }}>
+                <h4 style={{ margin: 0 }}>{modelData.properties.casedata.title}</h4>
+                <div style={{ width: 600, height: 400, marginLeft: "auto", marginRight: "auto" }}>
+                    <ResultsChart modelData={modelData.properties} results={results.properties} />
+                </div>
             </div>
-            <Button disabled={running} onClick={() => runSimulation()}>
+            {modelData && <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />}
+        </div>
+    );
+};
+
+export interface ParameterPanelProps {
+    running: boolean;
+    onRun: (params: { [key: string]: string }) => void;
+    modelData: ModelData;
+}
+
+const ParameterPanel = (props: ParameterPanelProps) => {
+    const params = props.modelData.categories.parameter;
+    const defaults: { [key: string]: string } = params.reduce((d, key) => {
+        d[key] = props.modelData.vars[key].start;
+        return d;
+    }, {});
+    console.log("defaults = ", defaults);
+    const [mods, setMods] = useState(defaults);
+    return (
+        <Card
+            interactive={true}
+            elevation={Elevation.TWO}
+            style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto" }}
+        >
+            <p>Parameters</p>
+            {params.map(key => {
+                const v = props.modelData.vars[key];
+                return (
+                    <FormGroup
+                        key={key}
+                        inline={true}
+                        intent={Intent.NONE}
+                        label={
+                            <div style={{ width: "5em" }}>
+                                <code>{key}</code>
+                            </div>
+                        }
+                        labelFor={`param-${key}`}
+                        helperText={v.description}
+                        // labelInfo={v.description && `(${v.description})`}
+                    >
+                        <InputGroup
+                            style={{ marginLeft: "auto" }}
+                            id="text-input"
+                            value={mods[key].toString()}
+                            onChange={event => {
+                                console.log("v = ", event.target.value);
+                                const updated = { ...mods };
+                                updated[key] = event.target.value;
+                                setMods(updated);
+                            }}
+                            disabled={props.running}
+                            intent={Intent.NONE}
+                        />
+                    </FormGroup>
+                );
+            })}
+            <Button disabled={props.running} onClick={() => props.onRun(mods)}>
                 Run
             </Button>
-        </div>
+        </Card>
     );
 };
 
@@ -120,7 +188,18 @@ export interface ResultsChartProps {
     results: Results;
 }
 
-const colors: string[] = ["#8884d8", "#82ca9d"];
+const colors: string[] = [
+    "#1f77b4",
+    "#ff7f0e",
+    "#2ca02c",
+    "#d62728",
+    "#9467bd",
+    "#8c564b",
+    "#e377c2",
+    "#7f7f7f",
+    "#bcbd22",
+    "#17becf",
+];
 
 const ResultsChart = (props: ResultsChartProps) => {
     const times = props.results.trajectories["time"];
@@ -133,7 +212,7 @@ const ResultsChart = (props: ResultsChartProps) => {
         ret["time"] = t;
         caseData.vars.forEach(v => {
             const entry = props.results.trajectories[v.name];
-            const val = Array.isArray(entry) ? entry[i] : entry;
+            const val = (Array.isArray(entry) ? entry[i] : entry) * v.scale;
             if (ymin == null || ymin > val) ymin = val;
             if (ymax == null || ymax < val) ymax = val;
             ret[v.name] = val;
@@ -159,9 +238,20 @@ const ResultsChart = (props: ResultsChartProps) => {
                 <YAxis domain={[caseData.ymin || "auto", caseData.ymax || "auto"]} />
                 <Tooltip />
                 <Legend align="center" verticalAlign="top" />
-                {caseData.vars.map((v, i) => (
-                    <Line key={i} type="monotone" dataKey={v.name} stroke={colors[i % colors.length]} name={v.legend} />
-                ))}
+                {caseData.vars.map((v, i) => {
+                    const lineStyle = v.style == "-" ? undefined : "3 4 5 2";
+                    return (
+                        <Line
+                            strokeWidth={3}
+                            key={i}
+                            type="monotone"
+                            dataKey={v.name}
+                            strokeDasharray={lineStyle}
+                            stroke={colors[i % colors.length]}
+                            name={v.legend}
+                        />
+                    );
+                })}
             </LineChart>
         </ResponsiveContainer>
     );

@@ -23,3 +23,12 @@ simply move the `_images` folder in `json` to `static`, _e.g.,_
 ```sh
 $ mv json/_images static
 ```
+
+### Static Assets
+
+Finally, we need to move everything from `json/_static/sponsors` into
+`static/sponors`, _i.e.,_
+
+```sh
+$ mv json/_static/sponsors static
+```
