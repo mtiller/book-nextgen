@@ -35,7 +35,7 @@ export interface VariableInfo {
 
 export interface ModelData {
     casedata: CaseData;
-    categories: { continuous: string[]; parameter: string[] };
+    categories: { continuous: string[]; parameter?: string[] };
     vars: { [name: string]: VariableInfo };
 }
 
@@ -131,7 +131,7 @@ export interface ParameterPanelProps {
 }
 
 const ParameterPanel = (props: ParameterPanelProps) => {
-    const params = props.modelData.categories.parameter;
+    const params = props.modelData.categories.parameter || [];
     const defaults: { [key: string]: string } = params.reduce((d, key) => {
         d[key] = props.modelData.vars[key].start;
         return d;

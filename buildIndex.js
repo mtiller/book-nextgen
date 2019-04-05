@@ -63,7 +63,7 @@ async function buildIndex() {
             }
         });
     });
-    fs.writeFileSync("test.idx", JSON.stringify(idx.toJSON()));
+    fs.writeFileSync("static/lunr.json", JSON.stringify(idx.toJSON()));
 }
 
 buildIndex().catch(err => console.error(err));

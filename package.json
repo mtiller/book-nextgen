@@ -36,6 +36,7 @@
         "export": "next export",
         "start": "next start",
         "serve": "yarn build && yarn export && serve out",
+        "index": "node buildIndex.js",
         "now-build": "next build && next export -o dist",
         "upload": "now",
         "test": "jest"
