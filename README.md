@@ -32,3 +32,8 @@ Finally, we need to move everything from `json/_static/sponsors` into
 ```sh
 $ mv json/_static/sponsors static
 ```
+
+## Deployment
+
+I'm using ZEIT's `now` package which is quite simple and easy to use. Just run
+`yarn upload` to sync and publish the site.
