@@ -6,7 +6,6 @@
     background-color: transparent;
 }
 
-
 #root {
     width: 100%;
     position: relative;
@@ -37,15 +36,15 @@
 }
 
 .ribbon {
-  position: absolute;
-  right: 0px;
-  top: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 .thumbshadow {
-  -webkit-box-shadow: 0 0 10px #888;
-     -moz-box-shadow: 0 0 10px #888;
-          box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+    -moz-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
 }
 
 .ui.form .field {
@@ -54,4 +53,13 @@
 
 div.math p {
     text-align: center;
+}
+
+.figure .bp3-form-helper-text {
+    text-align: left;
+    margin-top: 0px;
+}
+
+.figure .bp3-form-group {
+    margin: 0px 0px 0px 0px;
 }

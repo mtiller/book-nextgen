@@ -3,9 +3,21 @@ import { Injector } from "./types";
 import { useState, useEffect } from "react";
 import { Entity } from "siren-types";
 import { SirenNav } from "siren-nav";
-import { Button, Label, Classes, FormGroup, Intent, InputGroup, Card, Elevation } from "@blueprintjs/core";
+import {
+    Button,
+    Label,
+    Classes,
+    FormGroup,
+    Intent,
+    InputGroup,
+    Card,
+    Elevation,
+    Position,
+    Tooltip,
+} from "@blueprintjs/core";
 
-import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Line, Legend, ResponsiveContainer } from "recharts";
+import { LineChart, CartesianGrid, XAxis, YAxis, Line, Legend, ResponsiveContainer } from "recharts";
+import { Tooltip as RechartTooltip } from "recharts";
 
 export interface VariableDetails {
     style: "-" | "-.";
@@ -39,7 +51,6 @@ export interface ModelData {
     vars: { [name: string]: VariableInfo };
 }
 
-
 export interface Results {
     title: string;
     params: { [key: string]: number };
@@ -51,7 +62,6 @@ export interface Results {
 
 const billboardUrl = "https://mbe-api.modelica.university";
 // const billboardUrl = "http://localhost:3010";
-
 
 export const interactiveInjector: Injector = (node, children, index, def) => {
     if (node.type == "text") return null;
@@ -115,8 +125,8 @@ const Interactive = (props: { id: string; content: JSX.Element }) => {
         <div style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ flexGrow: 0 }}>
                 <h4 style={{ margin: 0 }}>{modelData.properties.casedata.title}</h4>
-                <div style={{ width: 600, height: 400, marginLeft: "auto", marginRight: "auto" }}>
-                    <ResultsChart modelData={modelData.properties} results={results.properties} />
+                <div style={{ width: 600, height: 480, marginLeft: "auto", marginRight: "auto" }}>
+                    <ResultsChart height={460} modelData={modelData.properties} results={results.properties} />
                 </div>
             </div>
             {modelData && <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />}
@@ -153,12 +163,12 @@ const ParameterPanel = (props: ParameterPanelProps) => {
                         intent={Intent.NONE}
                         label={
                             <div style={{ width: "5em" }}>
-                                <code>{key}</code>
+                                <Tooltip content={v.description}>
+                                    <code>{key}</code>
+                                </Tooltip>
                             </div>
                         }
                         labelFor={`param-${key}`}
-                        helperText={v.description}
-                        // labelInfo={v.description && `(${v.description})`}
                     >
                         <InputGroup
                             style={{ marginLeft: "auto" }}
@@ -176,8 +186,8 @@ const ParameterPanel = (props: ParameterPanelProps) => {
                     </FormGroup>
                 );
             })}
-            <Button disabled={props.running} onClick={() => props.onRun(mods)}>
-                Run
+            <Button style={{ marginTop: 5 }} disabled={props.running} onClick={() => props.onRun(mods)}>
+                Simulate
             </Button>
         </Card>
     );
@@ -238,7 +248,7 @@ const ResultsChart = (props: ResultsChartProps) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis type="number" allowDecimals={false} dataKey="time" height={60} domain={["dataMin", "dataMax"]} />
                 <YAxis domain={[caseData.ymin || "auto", caseData.ymax || "auto"]} />
-                <Tooltip />
+                <RechartTooltip />
                 <Legend align="center" verticalAlign="top" />
                 {caseData.vars.map((v, i) => {
                     const lineStyle = v.style == "-" ? undefined : "3 4 5 2";

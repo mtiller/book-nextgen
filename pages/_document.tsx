@@ -1,14 +1,16 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
-import { getInitialProps, parseGlobal } from "./data";
+import { getInitialPageProps } from "./data";
 import { PageData } from "./types";
+
+import "./index.css";
 
 export default class MyDocument extends Document<PageData> {
     static async getInitialProps(ctx) {
         let description = "Modelica by Example";
         if (!ctx.req) {
-            const g = parseGlobal(ctx);
-            description = g.release;
+            const g = await getInitialPageProps(ctx);
+            description = g.global.release;
         }
         const initialProps = await Document.getInitialProps(ctx);
         return { ...initialProps, description: description };
