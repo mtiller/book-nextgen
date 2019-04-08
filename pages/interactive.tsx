@@ -111,25 +111,25 @@ const Interactive = (props: { id: string; content: JSX.Element }) => {
     useEffect(() => {
         fetchDetails();
     }, [billboardUrl, props.id]);
-    if (results == null) {
-        return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
+    return (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            <div style={{ flexGrow: 1, flexBasis: 0, display: "flex" }}>
+                <div style={{ flexGrow: 1 }} />
                 {modelData && (
                     <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />
                 )}
-                <div style={{ flexGrow: 0 }}>{props.content}</div>
             </div>
-        );
-    }
-    return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-            {modelData && <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />}
-            <div style={{ flexGrow: 0 }}>
-                <h4 style={{ margin: 0 }}>{modelData.properties.casedata.title}</h4>
-                <div style={{ width: 600, height: 480, marginLeft: "auto", marginRight: "auto" }}>
-                    <ResultsChart height={460} modelData={modelData.properties} results={results.properties} />
+            {results ? (
+                <div style={{ flexGrow: 0 }}>
+                    <h4 style={{ margin: 0, marginTop: 10, marginBottom: 5 }}>{modelData.properties.casedata.title}</h4>
+                    <div style={{ width: 600, height: 480, marginLeft: "auto", marginRight: "auto" }}>
+                        <ResultsChart height={460} modelData={modelData.properties} results={results.properties} />
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div style={{ flexGrow: 0 }}>{props.content}</div>
+            )}
+            <div style={{ flexGrow: 1, flexBasis: 0 }} />
         </div>
     );
 };
@@ -235,7 +235,7 @@ const ResultsChart = (props: ResultsChartProps) => {
                 height={props.height || 400}
                 data={data}
                 margin={{
-                    top: 20,
+                    top: 0,
                     right: 30,
                     left: 20,
                     bottom: 10,
@@ -247,7 +247,7 @@ const ResultsChart = (props: ResultsChartProps) => {
                 <RechartTooltip
                     formatter={(value, name, props) => (typeof value === "number" ? value.toFixed(3) : value)}
                 />
-                <Legend align="center" verticalAlign="top" />
+                <Legend align="center" verticalAlign="top" height={30} />
                 {caseData.vars.map((v, i) => {
                     const lineStyle = v.style == "-" ? undefined : "3 4 5 2";
                     return (
