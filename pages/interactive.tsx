@@ -114,22 +114,22 @@ const Interactive = (props: { id: string; content: JSX.Element }) => {
     if (results == null) {
         return (
             <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ flexGrow: 0 }}>{props.content}</div>
                 {modelData && (
                     <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />
                 )}
+                <div style={{ flexGrow: 0 }}>{props.content}</div>
             </div>
         );
     }
     return (
         <div style={{ display: "flex", justifyContent: "center" }}>
+            {modelData && <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />}
             <div style={{ flexGrow: 0 }}>
                 <h4 style={{ margin: 0 }}>{modelData.properties.casedata.title}</h4>
                 <div style={{ width: 600, height: 480, marginLeft: "auto", marginRight: "auto" }}>
                     <ResultsChart height={460} modelData={modelData.properties} results={results.properties} />
                 </div>
             </div>
-            {modelData && <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />}
         </div>
     );
 };
@@ -148,12 +148,8 @@ const ParameterPanel = (props: ParameterPanelProps) => {
     }, {});
     const [mods, setMods] = useState(defaults);
     return (
-        <Card
-            interactive={true}
-            elevation={Elevation.TWO}
-            style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto" }}
-        >
-            <p>Parameters</p>
+        <div style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto" }}>
+            <h4 style={{ marginTop: 5, marginBottom: 10 }}>Model Parameters</h4>
             {params.map(key => {
                 const v = props.modelData.vars[key];
                 return (
@@ -189,7 +185,7 @@ const ParameterPanel = (props: ParameterPanelProps) => {
             <Button style={{ marginTop: 5 }} disabled={props.running} onClick={() => props.onRun(mods)}>
                 Simulate
             </Button>
-        </Card>
+        </div>
     );
 };
 
@@ -248,7 +244,9 @@ const ResultsChart = (props: ResultsChartProps) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis type="number" allowDecimals={false} dataKey="time" height={60} domain={["dataMin", "dataMax"]} />
                 <YAxis domain={[caseData.ymin || "auto", caseData.ymax || "auto"]} />
-                <RechartTooltip />
+                <RechartTooltip
+                    formatter={(value, name, props) => (typeof value === "number" ? value.toFixed(3) : value)}
+                />
                 <Legend align="center" verticalAlign="top" />
                 {caseData.vars.map((v, i) => {
                     const lineStyle = v.style == "-" ? undefined : "3 4 5 2";
