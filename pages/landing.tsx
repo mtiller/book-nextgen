@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Elevation, Collapse } from "@blueprintjs/core";
-import { PageData } from "./types";
-import { Choices, Choice } from "./choices";
+import { PageData } from "../src/types";
+import { Choices, Choice } from "../components/choices";
 import { MailingList, FAQs, BuyBook } from "./quick_links";
 import { SponsorView } from "./sponsors";
 import { Index } from "lunr";

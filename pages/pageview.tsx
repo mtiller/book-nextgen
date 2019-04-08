@@ -1,12 +1,12 @@
 import React from "react";
 import { NextContext } from "next";
-import { PageData } from "./types";
+import { PageData } from "../src/types";
 import { getInitialPageProps } from "./data";
 import { Heading } from "./heading";
 import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
 import { Index } from "lunr";
 import { Reactify } from "./reactify";
-import { interactiveInjector } from "./interactive";
+import { interactiveInjector } from "../components/interactive";
 import { sourceViewInjector } from "./source";
 
 const YouAreHere = (props: PageData) => {

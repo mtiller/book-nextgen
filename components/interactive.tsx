@@ -1,5 +1,5 @@
 import React from "react";
-import { Injector } from "./types";
+import { Injector } from "../src/types";
 import { useState, useEffect } from "react";
 import { Entity } from "siren-types";
 import { SirenNav } from "siren-nav";

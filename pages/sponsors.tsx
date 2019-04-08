@@ -1,5 +1,5 @@
 import React from "react";
-import { Sponsors, SponsorData } from "./types";
+import { Sponsors, SponsorData } from "../src/types";
 import { Popover } from "@blueprintjs/core";
 
 export interface SponsorViewProps {

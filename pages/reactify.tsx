@@ -1,5 +1,5 @@
 import React from "react";
-import { Injector, ParsedNode } from "./types";
+import { Injector, ParsedNode } from "../src/types";
 
 var h2r = require("html-to-react");
 

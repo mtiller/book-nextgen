@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Dialog, FormGroup, InputGroup, Popover, Position, Menu, MenuItem } from "@blueprintjs/core";
+import { InputGroup, Popover, Position, Menu, MenuItem } from "@blueprintjs/core";
 import { useState, useEffect } from "react";
 import { Index } from "lunr";
 
@@ -18,17 +18,14 @@ export const SearchDialog = (props: SearchDialogProps) => {
     const [term, setTerm] = useState("");
     const [hits, setHits] = useState<SearchHit[]>([]);
 
-    useEffect(
-        () => {
-            if (props.index && term != "") {
-                let results = props.index.search(term);
-                setHits(results.map(result => ({ title: props.titles[result.ref], href: result.ref })));
-            } else {
-                setHits([]);
-            }
-        },
-        [term, props.index],
-    );
+    useEffect(() => {
+        if (props.index && term != "") {
+            let results = props.index.search(term);
+            setHits(results.map(result => ({ title: props.titles[result.ref], href: result.ref })));
+        } else {
+            setHits([]);
+        }
+    }, [term, props.index]);
 
     return (
         <div>

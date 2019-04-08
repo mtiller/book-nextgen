@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Navbar, AnchorButton, Button, Dialog } from "@blueprintjs/core";
-import { SphinxLink } from "./types";
+import { SphinxLink } from "../src/types";
 import { Index } from "lunr";
 import { SearchDialog } from "./search";
 import { useState } from "react";

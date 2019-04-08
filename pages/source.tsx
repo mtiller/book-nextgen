@@ -1,6 +1,6 @@
 import React from "react";
-import { Injector } from "./types";
-import { Toggler } from "./toggler";
+import { Injector } from "../src/types";
+import { Toggler } from "../components/toggler";
 import { classEqual, hasText } from "./reactify";
 
 const isLast = (kid: JSX.Element) => kid.type == "span" && classEqual(kid, "p") && hasText(kid, ";", true);

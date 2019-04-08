@@ -1,5 +1,5 @@
 import { NextContext } from "next";
-import { PageData, IndexPageData, GlobalData, SphinxPage, IndexData, Sponsors } from "./types";
+import { PageData, IndexPageData, GlobalData, SphinxPage, IndexData, Sponsors } from "../src/types";
 
 function get(key: string, context: NextContext): string {
     const val = context.query[key];

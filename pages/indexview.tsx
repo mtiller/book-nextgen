@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IndexPageData, IndexNode } from "./types";
+import { IndexPageData, IndexNode } from "../src/types";
 import { NextContext } from "next";
 import { getInitialIndexProps } from "./data";
 import { Heading } from "./heading";

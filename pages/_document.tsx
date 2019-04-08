@@ -1,7 +1,7 @@
 import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import { getInitialPageProps } from "./data";
-import { PageData } from "./types";
+import { PageData } from "../src/types";
 
 import "./index.css";
 
