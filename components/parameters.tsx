@@ -15,6 +15,7 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
         return d;
     }, {});
     const [mods, setMods] = useState(defaults);
+    const maxSize = params.reduce((size, v) => (v.length > size ? v.length : size), 0);
     return (
         <div style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto" }}>
             <h4 style={{ marginTop: 5, marginBottom: 10 }}>Model Parameters</h4>
@@ -26,10 +27,19 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
                         inline={true}
                         intent={Intent.NONE}
                         label={
-                            <div style={{ width: "5em" }}>
-                                <Tooltip content={v.description}>
-                                    <code>{key}</code>
-                                </Tooltip>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    width: `${(1 + (2 * maxSize) / 3).toFixed()}em`,
+                                    textAlign: "right",
+                                }}
+                            >
+                                <div style={{ flexGrow: 1 }} />
+                                <div>
+                                    <Tooltip content={v.description}>
+                                        <code>{key}</code>
+                                    </Tooltip>
+                                </div>
                             </div>
                         }
                         labelFor={`param-${key}`}

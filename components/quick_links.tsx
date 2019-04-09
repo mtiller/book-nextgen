@@ -29,7 +29,7 @@ export const mailingList = (
                     <FormGroup label="Email" labelFor="mce-EMAIL" labelInfo="(required)">
                         <InputGroup id="mce-EMAIL" name="EMAIL" placeholder="Your email address" />
                         <div style={{ position: "absolute", left: "-5000px" }}>
-                            <input type="text" name="b_3bfc2e5430d32efbe641d6e58_f260a85b89" value="" />
+                            <input type="text" name="b_3bfc2e5430d32efbe641d6e58_f260a85b89" defaultValue="" />
                         </div>
                     </FormGroup>
                     <div className="clear">

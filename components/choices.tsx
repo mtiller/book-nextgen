@@ -36,7 +36,7 @@ export const Choices = (props: ChoicesProps) => {
                             />
                             {faq.title}
                         </h3>
-                        <Collapse isOpen={open == i}>
+                        <Collapse isOpen={open == i} keepChildrenMounted={true}>
                             <div style={{ paddingTop: 10, paddingLeft: 20 }}>{faq.contents}</div>
                         </Collapse>
                     </div>
