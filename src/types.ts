@@ -1,5 +1,46 @@
 import { RouterProps } from "next/router";
 
+export interface VariableDetails {
+    style: "-" | "-.";
+    scale: number;
+    name: string;
+    legend: string;
+}
+
+export interface CaseData {
+    ymin: null | number;
+    ymax: null | number;
+    ylabel: string;
+    legloc: string;
+    name: string;
+    mods: { [param: string]: number };
+    title: string;
+    stopTime: null | number;
+    type: string;
+    vars: Array<VariableDetails>;
+}
+
+export interface VariableInfo {
+    variability: "parameter" | "continuous";
+    description: string;
+    start: string;
+}
+
+export interface ModelData {
+    casedata: CaseData;
+    categories: { continuous: string[]; parameter?: string[] };
+    vars: { [name: string]: VariableInfo };
+}
+
+export interface Results {
+    title: string;
+    params: { [key: string]: number };
+    success: boolean;
+    stdout: string;
+    stderr: string;
+    trajectories: { [key: string]: number[] };
+}
+
 export type Injector = (
     node: ParsedNode,
     children: JSX.Element[],

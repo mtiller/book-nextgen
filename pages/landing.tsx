@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Elevation, Collapse } from "@blueprintjs/core";
+import { Card, Elevation } from "@blueprintjs/core";
 import { PageData } from "../src/types";
 import { Choices, Choice } from "../components/choices";
 import { mailingList, faqs, buyBook } from "../components/quick_links";
