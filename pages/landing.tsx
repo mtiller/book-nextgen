@@ -2,15 +2,15 @@ import React from "react";
 import { Card, Elevation, Collapse } from "@blueprintjs/core";
 import { PageData } from "../src/types";
 import { Choices, Choice } from "../components/choices";
-import { MailingList, FAQs, BuyBook } from "./quick_links";
-import { SponsorView } from "./sponsors";
+import { mailingList, faqs, buyBook } from "../components/quick_links";
+import { SponsorView } from "../components/sponsors";
 import { Index } from "lunr";
-import { SearchDialog } from "./search";
+import { SearchDialog } from "../components/search";
 
-const faqs: Choice[] = [
-    { title: "Sign up for mailing list", contents: <MailingList /> },
-    { title: "Purchase eBook", contents: <BuyBook /> },
-    { title: "FAQs", contents: <FAQs /> },
+const choices: Choice[] = [
+    { title: "Sign up for mailing list", contents: mailingList },
+    { title: "Purchase eBook", contents: buyBook },
+    { title: "FAQs", contents: faqs },
 ];
 
 export const LandingPage = (props: PageData) => {
@@ -30,7 +30,7 @@ export const LandingPage = (props: PageData) => {
                 </Card>
                 <div style={{ width: "45vw" }}>
                     <Card style={{ margin: 10, padding: 0 }} elevation={Elevation.TWO}>
-                        <Choices faqs={faqs} />
+                        <Choices faqs={choices} />
                     </Card>
                     <Card elevation={Elevation.TWO} style={{ margin: 10 }}>
                         <SponsorView sponsors={props.sponsors} />

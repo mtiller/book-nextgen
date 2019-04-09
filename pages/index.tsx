@@ -1,7 +1,7 @@
 import React from "react";
 import { LandingPage } from "./landing";
 import { PageData } from "../src/types";
-import { getInitialPageProps } from "./data";
+import { getInitialPageProps } from "../src/data";
 
 export default class Index extends React.Component<PageData, {}> {
     static getInitialProps(context) {

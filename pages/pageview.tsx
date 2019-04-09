@@ -1,13 +1,12 @@
 import React from "react";
 import { NextContext } from "next";
 import { PageData } from "../src/types";
-import { getInitialPageProps } from "./data";
-import { Heading } from "./heading";
+import { getInitialPageProps } from "../src/data";
+import { Heading } from "../components/heading";
 import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
 import { Index } from "lunr";
-import { Reactify } from "./reactify";
-import { interactiveInjector } from "../components/interactive";
-import { sourceViewInjector } from "./source";
+import { Reactify } from "../components/reactify";
+import { interactiveInjector, sourceViewInjector } from "../injectors";
 
 const YouAreHere = (props: PageData) => {
     const parents: IBreadcrumbProps[] = props.page.parents.map(parent => ({ href: parent.link, text: parent.title }));

@@ -1,8 +1,9 @@
 import * as React from "react";
 import { IndexPageData, IndexNode } from "../src/types";
+import { RenderTree } from "../components";
 import { NextContext } from "next";
-import { getInitialIndexProps } from "./data";
-import { Heading } from "./heading";
+import { getInitialIndexProps } from "../src/data";
+import { Heading } from "../components/heading";
 import { Index } from "lunr";
 
 /**
@@ -14,65 +15,6 @@ function children(node: IndexNode): number {
         return p + children(c);
     }, 1);
 }
-
-/**
- * Properties for RenderTree (and RenderCategory)
- */
-interface RenderTreeProps {
-    node: IndexNode;
-    depth: number;
-}
-
-/**
- * Render the category name.  It might be plain text or a collection of links.
- * @param props
- */
-const RenderCategory = (props: RenderTreeProps) => {
-    if (props.node.self.length == 0) return <span>{props.node.category}</span>;
-    return (
-        <span>
-            <a href={props.node.self[0]}>
-                <b>{props.node.category}</b>
-            </a>{" "}
-            {props.node.self.slice(1).map((s, i) => (
-                <a key={i} href={s}>
-                    <b>{`[${i + 1}] `}</b>
-                </a>
-            ))}
-        </span>
-    );
-};
-
-/**
- * Render a given index node and all of its children
- * @param props
- */
-const RenderTree = (props: RenderTreeProps) => {
-    // At the root level, do it this way...
-    if (props.depth == 0) {
-        return (
-            <div>
-                <h3>
-                    <RenderCategory {...props} />
-                </h3>
-                {props.node.children.map((c, i) => (
-                    <RenderTree key={i} node={c} depth={props.depth + 1} />
-                ))}
-            </div>
-        );
-    }
-    // If not root level, do it this way
-    return (
-        <div style={{ margin: 20 }}>
-            <p>
-                <RenderCategory {...props} />
-            </p>
-            {props.node.children.map((c, i) => (
-                <RenderTree key={i} node={c} depth={props.depth + 1} />
-            ))}
-        </div>
-    );
-};
 
 /**
  * This function takes a collection on index nodes and breaks them into groupings

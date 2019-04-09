@@ -6,7 +6,7 @@ var h2r = require("html-to-react");
 const processNode = new h2r.ProcessNodeDefinitions(React);
 const parser = new h2r.Parser();
 
-export function classEqual(kid: JSX.Element, className: string) {
+export function classEqual(kid: JSX.Element, className: string): boolean {
     return (
         kid.props.hasOwnProperty("className") &&
         typeof kid.props.className == "string" &&
@@ -14,7 +14,7 @@ export function classEqual(kid: JSX.Element, className: string) {
     );
 }
 
-export function hasText(kid: JSX.Element, text: string, contains: boolean) {
+export function hasText(kid: JSX.Element, text: string, contains: boolean): boolean {
     if (kid.props.hasOwnProperty("children") && typeof kid.props.children == "string") {
         if (contains) return kid.props.children.indexOf(text) >= 0;
         return kid.props.children == text;

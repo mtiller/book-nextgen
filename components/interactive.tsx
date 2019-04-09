@@ -3,18 +3,7 @@ import { Injector } from "../src/types";
 import { useState, useEffect } from "react";
 import { Entity } from "siren-types";
 import { SirenNav } from "siren-nav";
-import {
-    Button,
-    Label,
-    Classes,
-    FormGroup,
-    Intent,
-    InputGroup,
-    Card,
-    Elevation,
-    Position,
-    Tooltip,
-} from "@blueprintjs/core";
+import { Button, FormGroup, Intent, InputGroup, Tooltip } from "@blueprintjs/core";
 
 import { LineChart, CartesianGrid, XAxis, YAxis, Line, Legend, ResponsiveContainer } from "recharts";
 import { Tooltip as RechartTooltip } from "recharts";
@@ -63,19 +52,8 @@ export interface Results {
 const billboardUrl = "https://mbe-api.modelica.university";
 // const billboardUrl = "http://localhost:3010";
 
-export const interactiveInjector: Injector = (node, children, index, def) => {
-    if (node.type == "text") return null;
-    const classes = node.attribs["class"];
-    if (!classes) return null;
-    const classList = classes.split(" ");
-    if (classList.indexOf("interactive") == -1) return null;
-    const src = node.attribs["src"];
-    const id = src.slice(16, src.length - 4);
-    return <Interactive key={index} id={id} content={def(node, children, index)} />;
-};
-
 const nav = SirenNav.create(billboardUrl, billboardUrl, undefined, { withCredentials: false });
-const Interactive = (props: { id: string; content: JSX.Element }) => {
+export const Interactive = (props: { id: string; content: JSX.Element }) => {
     const [modelData, setModelData] = useState<null | Entity<ModelData>>(null);
     const [modelNav, setModelNav] = useState<null | SirenNav>(null);
     const [running, setRunning] = useState<boolean>(false);
