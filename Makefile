@@ -11,4 +11,10 @@ publish_site:
 	yarn build
 	yarn export
 	$(info Uploading to ZEIT Now)
-	@(cd nextgen; yarn upload --silent -- -t $(NOW_TOKEN))
+	@yarn upload --silent -- -t $(NOW_TOKEN)
+
+alias_preview:
+	yarn alias_preview
+
+alias_release:
+	yarn alias_preview

@@ -34,6 +34,8 @@
         "dev": "next",
         "build": "next build",
         "export": "next export",
+        "alias_preview": "now alias https://nextgen-book.michaeltiller.now.sh mbe-preview.modelica.university",
+        "alias_release": "now alias https://nextgen-book.michaeltiller.now.sh mbe.modelica.university",
         "start": "next start",
         "serve": "yarn build && yarn export && serve out",
         "index": "node buildIndex.js",

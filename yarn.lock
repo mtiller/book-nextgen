@@ -4273,9 +4273,9 @@ normalize.css@^8.0.0:
   integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
 now@^15.0.1:
-  version "15.0.1"
-  resolved "https://registry.npmjs.org/now/-/now-15.0.1.tgz#a0694e2777a93e1c5e814663fe066cc036a0d564"
-  integrity sha512-iAxrNlQKprwTauZFNI8eWgloWn45792qumF/ItEh8Pjv8+xfs8qAWHtRsyK8q5tCmToY3d70uu0ASvVGTmVrwQ==
+  version "15.0.5"
+  resolved "https://registry.npmjs.org/now/-/now-15.0.5.tgz#bce4e4ca2cb95866f04aaf28b415ff50eb7a90c5"
+  integrity sha512-6FcurNJIRot2Si0RMdxK1LLNygKf+Lw6UhFKEO2/r3XNUhHgGAVIRTnMiEX9CIHbirICjQRDIYq3bKHkpeBoow==
 
 npm-bundled@^1.0.1:
   version "1.0.5"
