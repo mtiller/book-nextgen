@@ -11,10 +11,12 @@ publish_site:
 	yarn build
 	yarn export
 	$(info Uploading to ZEIT Now)
-	@yarn upload --silent -- -t $(NOW_TOKEN)
+	@yarn upload -t $(NOW_TOKEN)
 
 alias_preview:
-	yarn alias_preview
+	$(info Aliasing result to mbe-preview.modelica.university)
+	@yarn alias_preview -t $(NOW_TOKEN)
 
 alias_release:
-	yarn alias_preview
+	$(info Aliasing result to mbe.modelica.university)
+	@yarn alias_release -t $(NOW_TOKEN)
