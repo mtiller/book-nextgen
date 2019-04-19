@@ -24,7 +24,6 @@ export const SearchDialog = (props: SearchDialogProps) => {
             let results = props.index.search(`${term}*`);
             console.log(results);
             const hits = results.map(result => {
-                const md = result.matchData.metadata;
                 const title = props.titles[result.ref];
                 return {
                     title: `${title}`,
@@ -51,6 +50,7 @@ export const SearchDialog = (props: SearchDialogProps) => {
                 position={Position.BOTTOM}
             >
                 <InputGroup
+                    accessKey="s"
                     id="text-input"
                     leftIcon="search"
                     placeholder="Search terms..."

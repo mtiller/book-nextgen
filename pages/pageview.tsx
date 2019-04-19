@@ -40,7 +40,7 @@ export default class PageView extends React.Component<PageData> {
                 <YouAreHere {...props} />
 
                 <div style={{ margin: 20 }}>
-                    <Reactify html={props.page.body} injectors={[interactiveInjector, sourceViewInjector]} />
+                    <Reactify html={body} injectors={[interactiveInjector, sourceViewInjector]} />
                 </div>
             </div>
         );

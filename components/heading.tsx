@@ -21,7 +21,13 @@ export const Heading = (props: HeadingProps) => {
         <div>
             <Navbar className="bp3-dark" style={{ display: "flex", justifyContent: "space-between" }} fixedToTop={true}>
                 <Navbar.Group>
-                    <Button className="mp3-minimal" icon="align-left" onClick={() => setOpen(true)} text="TOC" />
+                    <Button
+                        className="mp3-minimal"
+                        icon="align-left"
+                        onClick={() => setOpen(true)}
+                        text="TOC"
+                        accessKey="t"
+                    />
                     <Dialog isOpen={open} onClose={() => setOpen(false)}>
                         <div className="bp3-dialog-header">
                             <span className="bp3-icon-large bp3-icon-align-left" />
@@ -38,6 +44,7 @@ export const Heading = (props: HeadingProps) => {
                         <AnchorButton
                             className="bp3-minimal"
                             icon="arrow-left"
+                            accessKey="p"
                             text={props.prev.title}
                             href={props.prev.link}
                         />
@@ -48,6 +55,7 @@ export const Heading = (props: HeadingProps) => {
                         <AnchorButton
                             className="bp3-minimal"
                             icon="arrow-up"
+                            accessKey="u"
                             text={props.parent.title}
                             href={props.parent.link}
                         />
@@ -57,6 +65,7 @@ export const Heading = (props: HeadingProps) => {
                         className="bp3-minimal"
                         icon="home"
                         text="Home"
+                        accessKey="h"
                         href="/"
                     />
                     <SearchDialog index={props.search} titles={props.titles} />
@@ -66,6 +75,7 @@ export const Heading = (props: HeadingProps) => {
                         <AnchorButton
                             className="bp3-minimal"
                             rightIcon="arrow-right"
+                            accessKey="n"
                             text={props.next.title}
                             href={props.next.link}
                         />
