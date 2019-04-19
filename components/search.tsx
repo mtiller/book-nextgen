@@ -20,8 +20,18 @@ export const SearchDialog = (props: SearchDialogProps) => {
 
     useEffect(() => {
         if (props.index && term != "") {
-            let results = props.index.search(term);
-            setHits(results.map(result => ({ title: props.titles[result.ref], href: result.ref })));
+            // This '*' matches potential characters the user could type
+            let results = props.index.search(`${term}*`);
+            console.log(results);
+            const hits = results.map(result => {
+                const md = result.matchData.metadata;
+                const title = props.titles[result.ref];
+                return {
+                    title: `${title}`,
+                    href: result.ref,
+                };
+            });
+            setHits(hits);
         } else {
             setHits([]);
         }

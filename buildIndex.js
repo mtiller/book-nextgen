@@ -3,6 +3,8 @@ var lunr = require("lunr");
 var path = require("path");
 var fs = require("fs");
 
+var h2t = require("html-to-text");
+
 // Put these in a module
 async function getPages() {
     return new Promise((resolve, reject) => {
@@ -52,13 +54,13 @@ async function buildIndex() {
         pages.forEach(page => {
             console.log("Processing " + page);
             const data = JSON.parse(fileData[page]);
+            const text = h2t.fromString(data.body);
             if (data.title && data.body) {
                 const addition = {
                     title: data.title,
-                    body: data.body,
+                    body: text,
                     id: `/${data.current_page_name}/`,
                 };
-                // console.log("addition = ", addition);
                 obj.add(addition);
             }
         });
