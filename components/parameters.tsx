@@ -16,8 +16,9 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
     }, {});
     const [mods, setMods] = useState(defaults);
     const maxSize = params.reduce((size, v) => (v.length > size ? v.length : size), 0);
+    const labelWidth = 1 + (2 * maxSize) / 3;
     return (
-        <div style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto" }}>
+        <div style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto", minWidth: `${labelWidth + 5}em` }}>
             <h4 style={{ marginTop: 5, marginBottom: 10 }}>Model Parameters</h4>
             {params.map(key => {
                 const v = props.modelData.vars[key];
@@ -30,7 +31,7 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
                             <div
                                 style={{
                                     display: "flex",
-                                    width: `${(1 + (2 * maxSize) / 3).toFixed()}em`,
+                                    width: `${labelWidth}em`,
                                     textAlign: "right",
                                 }}
                             >

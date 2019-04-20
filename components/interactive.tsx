@@ -47,7 +47,7 @@ export const Interactive = (props: { id: string; content: JSX.Element }) => {
         fetchDetails();
     }, [billboardUrl, props.id]);
     return (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
             <div style={{ flexGrow: 1, flexBasis: 0, display: "flex" }}>
                 <div style={{ flexGrow: 1 }} />
                 {modelData && (
