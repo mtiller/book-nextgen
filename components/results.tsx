@@ -63,7 +63,15 @@ export const ResultsChart = (props: ResultsChartProps) => {
                 />
                 <Legend align="center" verticalAlign="top" height={30} />
                 {caseData.vars.map((v, i) => {
-                    const lineStyle = v.style == "-" ? undefined : "3 4 5 2";
+                    let lineStyle: string | undefined = undefined;
+                    switch (v.style) {
+                        case "-.":
+                            lineStyle = "7 1 1 1";
+                            break;
+                        case ".":
+                            lineStyle = "1 2";
+                            break;
+                    }
                     return (
                         <Line
                             strokeWidth={3}

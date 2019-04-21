@@ -1,7 +1,7 @@
 import { RouterProps } from "next/router";
 
 export interface VariableDetails {
-    style: "-" | "-.";
+    style: "-" | "-." | ".";
     scale: number;
     name: string;
     legend: string;
