@@ -11,12 +11,10 @@ function get(key: string, context: NextContext): string {
 export async function getInitialPageProps(context: NextContext): Promise<PageData> {
     const page = parseFJSon<SphinxPage>(context.query, "page");
     const global = parseFJSon<GlobalData>(context.query, "global");
-    const sponsors = parseFJSon<Sponsors>(context.query, "sponsors");
     const titles = parseFJSon<{ [href: string]: string }>(context.query, "titles");
     return {
         page: page,
         global: global,
-        sponsors: sponsors,
         titles: titles,
         toc: get("toc", context),
     };

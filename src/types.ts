@@ -147,9 +147,12 @@ export interface SearchData {
 export interface PageData {
     page: SphinxPage;
     global: GlobalData;
-    sponsors: Sponsors;
     titles: { [href: string]: string };
     toc: string;
+}
+
+export interface LandingPageData extends PageData {
+    sponsors: Sponsors;
 }
 
 export interface IndexPageData {

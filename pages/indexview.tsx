@@ -4,7 +4,6 @@ import { RenderTree } from "../components";
 import { NextContext } from "next";
 import { getInitialIndexProps } from "../src/data";
 import { Heading } from "../components/heading";
-import { Index } from "lunr";
 
 /**
  * Count the total number of children (leaves) in this tree

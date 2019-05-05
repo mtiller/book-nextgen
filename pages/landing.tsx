@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
-import { PageData } from "../src/types";
+import { LandingPageData } from "../src/types";
 import { Choices, Choice } from "../components/choices";
 import { mailingList, faqs, buyBook } from "../components/quick_links";
 import { SponsorView } from "../components/sponsors";
@@ -13,7 +13,7 @@ const choices: Choice[] = [
     { title: "FAQs", contents: faqs },
 ];
 
-export const LandingPage = (props: PageData) => {
+export const LandingPage = (props: LandingPageData) => {
     return (
         <div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>

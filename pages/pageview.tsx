@@ -4,7 +4,6 @@ import { PageData } from "../src/types";
 import { getInitialPageProps } from "../src/data";
 import { Heading } from "../components/heading";
 import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
-import { Index } from "lunr";
 import { Reactify } from "../components/reactify";
 import { interactiveInjector, sourceViewInjector } from "../injectors";
 

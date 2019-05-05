@@ -102,7 +102,6 @@ module.exports = withCSS(
         exportPathMap: async defaultPathMap => {
             const globalData = await getData("globalcontext.json");
             const sponsorData = await getData("_static/sponsors/sponsors.json");
-            const lunrData = await fs.readFileSync("./static/lunr.json").toString();
             const titles = {};
             const files = await getPages();
             const ret = {};
@@ -129,16 +128,15 @@ module.exports = withCSS(
                         const query = {
                             page: fjson,
                             global: globalData,
-                            sponsors: sponsorData,
                             titles: titleData,
                             toc: toc,
+                            sponsors: sponsorData,
                         };
                         ret["/"] = { page: "/", query: query };
                         break;
                     }
                     case "genindex.fjson": {
                         const raw = JSON.parse(fjson);
-                        // console.log("raw = ", JSON.stringify(raw));
                         const entries = raw["genindexentries"];
                         const normal = entries.map(normalizeEntry);
                         const text = JSON.stringify({
@@ -148,7 +146,6 @@ module.exports = withCSS(
                         const query = {
                             index: text,
                             global: globalData,
-                            sponsors: sponsorData,
                             titles: titleData,
                             toc: toc,
                         };
@@ -159,7 +156,6 @@ module.exports = withCSS(
                         const query = {
                             page: fjson,
                             global: globalData,
-                            sponsors: sponsorData,
                             titles: titleData,
                             toc: toc,
                         };

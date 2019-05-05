@@ -2,5 +2,5 @@
     "version": 2,
     "name": "nextgen-book",
     "builds": [{ "src": "package.json", "use": "@now/static-build" }],
-    "routes": [{ "src": "/static/.+", "headers": { "cache-control": "s-maxage=360" } }]
+    "routes": [{ "src": "/static/.+", "headers": { "cache-control": "maxage=3600" } }]
 }
