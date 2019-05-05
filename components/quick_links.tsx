@@ -62,12 +62,12 @@ const questions: Question[] = [
     {
         question: "What kind of DRM is there on the electronic version?",
         answer: (
-            <div>
+            <span>
                 <em>None</em>. I hate DRM and I don't want to waste my time trying to prevent people from stealing the
                 material. If you are that desperate that you need to steal it rather than pay $5 then go ahead. But I
                 believe that most technical people are inherently honest and I trust them to pay what they think is
                 appropriate. I hope they prove me right.
-            </div>
+            </span>
         ),
     },
     {
@@ -78,15 +78,13 @@ const questions: Question[] = [
     {
         question: "Is there a print version of book?",
         answer: (
-            <div>
-                <div>
-                    At the moment, there is no print version of the book. Our goal is to incorporate all the feedback we
-                    receive on the HTML version of the book before making a print version. We want to avoid situations
-                    where the print version becomes obsolete compared to the electronic versions. We do plan to produce
-                    a print version. So, please subscribe to our <a href="http://eepurl.com/PAEKj">mailing list</a> to
-                    be informed when the print version becomes available.
-                </div>
-            </div>
+            <span>
+                At the moment, there is no print version of the book. Our goal is to incorporate all the feedback we
+                receive on the HTML version of the book before making a print version. We want to avoid situations where
+                the print version becomes obsolete compared to the electronic versions. We do plan to produce a print
+                version. So, please subscribe to our <a href="http://eepurl.com/PAEKj">mailing list</a> to be informed
+                when the print version becomes available.
+            </span>
         ),
     },
 ];

@@ -27,7 +27,6 @@ export const Interactive = (props: { id: string; content: JSX.Element }) => {
         const mn = await nav.performAction("find", { model: props.id }).followLocation();
         setModelNav(mn);
         const data = await mn.get().asSiren<ModelData>();
-        console.log("data = ", data);
         setModelData(data);
     };
 

@@ -25,7 +25,6 @@ export default class PageView extends React.Component<PageData> {
     render() {
         const props = this.props;
         const body = props.page.body;
-        const search = Index.load(this.props.serializedIndex);
 
         return (
             <div>
@@ -33,7 +32,7 @@ export default class PageView extends React.Component<PageData> {
                     next={props.page.next}
                     prev={props.page.prev}
                     parent={props.page.parents.length > 0 ? props.page.parents[0] : null}
-                    search={search}
+                    searchUrl="/static/lunr.json"
                     titles={props.titles}
                     toc={props.toc}
                 />

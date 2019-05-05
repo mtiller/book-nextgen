@@ -148,7 +148,6 @@ export interface PageData {
     page: SphinxPage;
     global: GlobalData;
     sponsors: Sponsors;
-    serializedIndex: {};
     titles: { [href: string]: string };
     toc: string;
 }
@@ -156,7 +155,6 @@ export interface PageData {
 export interface IndexPageData {
     index: IndexData;
     global: GlobalData;
-    serializedIndex: {};
     titles: { [href: string]: string };
     toc: string;
 }

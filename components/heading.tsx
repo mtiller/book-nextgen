@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Navbar, AnchorButton, Button, Dialog } from "@blueprintjs/core";
 import { SphinxLink } from "../src/types";
@@ -10,13 +10,14 @@ export interface HeadingProps {
     next: SphinxLink | null;
     prev: SphinxLink | null;
     parent: SphinxLink | null;
-    search: Index;
+    searchUrl: string;
     titles: { [href: string]: string };
     toc: string;
 }
+
 export const Heading = (props: HeadingProps) => {
     const [open, setOpen] = useState(false);
-    // const page = props.page;
+
     return (
         <div>
             <Navbar className="bp3-dark" style={{ display: "flex", justifyContent: "space-between" }} fixedToTop={true}>
@@ -68,7 +69,7 @@ export const Heading = (props: HeadingProps) => {
                         accessKey="h"
                         href="/"
                     />
-                    <SearchDialog index={props.search} titles={props.titles} />
+                    <SearchDialog titles={props.titles} />
                 </Navbar.Group>
                 <Navbar.Group>
                     {props.next && (

@@ -14,7 +14,6 @@ const choices: Choice[] = [
 ];
 
 export const LandingPage = (props: PageData) => {
-    const search = Index.load(props.serializedIndex);
     return (
         <div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
@@ -24,7 +23,7 @@ export const LandingPage = (props: PageData) => {
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, width: "55vw" }}>
                     <div style={{ float: "right" }}>
-                        <SearchDialog index={search} titles={props.titles} />
+                        <SearchDialog titles={props.titles} />
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: props.page.body }} />
                 </Card>

@@ -12,13 +12,11 @@ export async function getInitialPageProps(context: NextContext): Promise<PageDat
     const page = parseFJSon<SphinxPage>(context.query, "page");
     const global = parseFJSon<GlobalData>(context.query, "global");
     const sponsors = parseFJSon<Sponsors>(context.query, "sponsors");
-    const searchIndex = parseFJSon<{}>(context.query, "searchIndex");
     const titles = parseFJSon<{ [href: string]: string }>(context.query, "titles");
     return {
         page: page,
         global: global,
         sponsors: sponsors,
-        serializedIndex: searchIndex,
         titles: titles,
         toc: get("toc", context),
     };
@@ -27,9 +25,8 @@ export async function getInitialPageProps(context: NextContext): Promise<PageDat
 export async function getInitialIndexProps(context: NextContext): Promise<IndexPageData> {
     const index = parseFJSon<IndexData>(context.query, "index");
     const global = parseFJSon<GlobalData>(context.query, "global");
-    const searchIndex = parseFJSon<{}>(context.query, "searchIndex");
     const titles = parseFJSon<{ [href: string]: string }>(context.query, "titles");
-    return { index: index, global: global, serializedIndex: searchIndex, titles: titles, toc: get("toc", context) };
+    return { index: index, global: global, titles: titles, toc: get("toc", context) };
 }
 
 function parseFJSon<P>(query: Record<string, string | string[]>, field: string): P {

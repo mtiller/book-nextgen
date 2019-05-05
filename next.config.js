@@ -130,7 +130,6 @@ module.exports = withCSS(
                             page: fjson,
                             global: globalData,
                             sponsors: sponsorData,
-                            searchIndex: lunrData,
                             titles: titleData,
                             toc: toc,
                         };
@@ -150,7 +149,6 @@ module.exports = withCSS(
                             index: text,
                             global: globalData,
                             sponsors: sponsorData,
-                            searchIndex: lunrData,
                             titles: titleData,
                             toc: toc,
                         };
@@ -162,7 +160,6 @@ module.exports = withCSS(
                             page: fjson,
                             global: globalData,
                             sponsors: sponsorData,
-                            searchIndex: lunrData,
                             titles: titleData,
                             toc: toc,
                         };

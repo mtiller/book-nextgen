@@ -3,8 +3,9 @@ import { InputGroup, Popover, Position, Menu, MenuItem } from "@blueprintjs/core
 import { useState, useEffect } from "react";
 import { Index } from "lunr";
 
+const searchUrl = "/static/lunr.json";
+
 export interface SearchDialogProps {
-    index: Index;
     titles: { [href: string]: string };
 }
 
@@ -13,16 +14,29 @@ interface SearchHit {
     href: string;
 }
 
+export function useSearch(): Index | null {
+    const url = searchUrl;
+    const [index, setIndex] = useState<Index | null>(null);
+    useEffect(() => {
+        fetch(url)
+            .then(v => v.json())
+            .then(index => {
+                setIndex(Index.load(index));
+            });
+    }, [url]);
+    return index;
+}
+
 export const SearchDialog = (props: SearchDialogProps) => {
     const [open, setOpen] = useState(false);
     const [term, setTerm] = useState("");
     const [hits, setHits] = useState<SearchHit[]>([]);
+    const index = useSearch();
 
     useEffect(() => {
-        if (props.index && term != "") {
+        if (index && term != "") {
             // This '*' matches potential characters the user could type
-            let results = props.index.search(`${term}*`);
-            console.log(results);
+            let results = index.search(`${term}*`);
             const hits = results.map(result => {
                 const title = props.titles[result.ref];
                 return {
@@ -34,7 +48,7 @@ export const SearchDialog = (props: SearchDialogProps) => {
         } else {
             setHits([]);
         }
-    }, [term, props.index]);
+    }, [term, index]);
 
     return (
         <div>
@@ -50,10 +64,11 @@ export const SearchDialog = (props: SearchDialogProps) => {
                 position={Position.BOTTOM}
             >
                 <InputGroup
+                    disabled={index == null}
                     accessKey="s"
                     id="text-input"
                     leftIcon="search"
-                    placeholder="Search terms..."
+                    placeholder={index ? "Search terms..." : "Loading index..."}
                     value={term}
                     onChange={ev => setTerm(ev.target.value)}
                 />

@@ -66,14 +66,13 @@ export default class IndexView extends React.Component<IndexPageData> {
         const index = this.props.index;
         const entries = index.entries;
         const columns = formColumns(entries);
-        const search = Index.load(this.props.serializedIndex);
         return (
             <div>
                 <Heading
                     next={null}
                     prev={null}
                     parent={null}
-                    search={search}
+                    searchUrl="/static/lunr.json"
                     titles={this.props.titles}
                     toc={this.props.toc}
                 />
