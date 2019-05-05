@@ -4,7 +4,6 @@ import { LandingPageData } from "../src/types";
 import { Choices, Choice } from "../components/choices";
 import { mailingList, faqs, buyBook } from "../components/quick_links";
 import { SponsorView } from "../components/sponsors";
-import { Index } from "lunr";
 import { SearchDialog } from "../components/search";
 
 const choices: Choice[] = [

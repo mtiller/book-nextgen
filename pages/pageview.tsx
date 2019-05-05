@@ -3,19 +3,9 @@ import { NextContext } from "next";
 import { PageData } from "../src/types";
 import { getInitialPageProps } from "../src/data";
 import { Heading } from "../components/heading";
-import { IBreadcrumbProps, Breadcrumbs } from "@blueprintjs/core";
 import { Reactify } from "../components/reactify";
 import { interactiveInjector, sourceViewInjector } from "../injectors";
-
-const YouAreHere = (props: PageData) => {
-    const parents: IBreadcrumbProps[] = props.page.parents.map(parent => ({ href: parent.link, text: parent.title }));
-    const breadcrumbs: IBreadcrumbProps[] = [{ text: "Home", href: "/" }, ...parents, { text: props.page.title }];
-    return (
-        <div style={{ margin: 20 }}>
-            <Breadcrumbs items={breadcrumbs} />
-        </div>
-    );
-};
+import { YouAreHere } from "../components/breadcrumbs";
 
 export default class PageView extends React.Component<PageData> {
     static getInitialProps(context: NextContext) {

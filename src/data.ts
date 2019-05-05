@@ -1,5 +1,14 @@
 import { NextContext } from "next";
-import { PageData, IndexPageData, GlobalData, SphinxPage, IndexData, Sponsors } from "./types";
+import {
+    PageData,
+    IndexPageData,
+    GlobalData,
+    SphinxPage,
+    IndexData,
+    Sponsors,
+    SponsorData,
+    LandingPageData,
+} from "./types";
 
 function get(key: string, context: NextContext): string {
     const val = context.query[key];
@@ -18,6 +27,12 @@ export async function getInitialPageProps(context: NextContext): Promise<PageDat
         titles: titles,
         toc: get("toc", context),
     };
+}
+
+export async function getInitialLandingPageProps(context: NextContext): Promise<LandingPageData> {
+    const pageData = await getInitialPageProps(context);
+    const sponsors = parseFJSon<Sponsors>(context.query, "sponsors");
+    return { ...pageData, sponsors: sponsors };
 }
 
 export async function getInitialIndexProps(context: NextContext): Promise<IndexPageData> {
