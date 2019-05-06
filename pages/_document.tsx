@@ -60,16 +60,16 @@ export default class MyDocument extends Document<PageData> {
 
                     <link rel="icon" href="/static/images/favicon.ico" />
                     <link
-                        href="http://fonts.googleapis.com/css?family=Domine:400,700"
+                        href="https://fonts.googleapis.com/css?family=Domine:400,700"
                         rel="stylesheet"
                         type="text/css"
                     />
                     <link
-                        href="http://fonts.googleapis.com/css?family=Inconsolata:400,700"
+                        href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
                         rel="stylesheet"
                         type="text/css"
                     />
-                    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+                    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
 
                     <link href="https://unpkg.com/normalize.css@^7.0.0" rel="stylesheet" />
                     <link href="https://unpkg.com/@blueprintjs/core@^3.0.0/lib/css/blueprint.css" rel="stylesheet" />
