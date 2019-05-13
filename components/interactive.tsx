@@ -9,7 +9,7 @@ import { ResultsChart } from "./results";
 const billboardUrl = "https://mbe-api.modelica.university";
 // const billboardUrl = "http://localhost:3010";
 
-const nav = SirenNav.create(billboardUrl, billboardUrl, undefined, { withCredentials: false });
+const nav = SirenNav.create(billboardUrl);
 export const Interactive = (props: { id: string; content: JSX.Element }) => {
     const [modelData, setModelData] = useState<null | Entity<ModelData>>(null);
     const [modelNav, setModelNav] = useState<null | SirenNav>(null);
@@ -24,7 +24,7 @@ export const Interactive = (props: { id: string; content: JSX.Element }) => {
         // Call the 'find' action on the current navigator (pointing at
         // billboard URL) to get a nav that points to the specific model
         // resources
-        const mn = await nav.performAction("find", { model: props.id }).followLocation();
+        const mn = await nav.follow("template", { model: props.id });
         setModelNav(mn);
         const data = await mn.get().asSiren<ModelData>();
         setModelData(data);
@@ -32,10 +32,14 @@ export const Interactive = (props: { id: string; content: JSX.Element }) => {
 
     const runSimulation = async (mods: { [key: string]: string }) => {
         setRunning(true);
-        const result = await modelNav.performAction("run", mods).asSiren<Results>();
-        setResults(result);
-        setRunning(false);
-        console.log("Result = ", result);
+        try {
+            const result = await modelNav.performAction("run", mods).asSiren<Results>();
+            setResults(result);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            setRunning(false);
+        }
     };
 
     // TODO: Go to billboard, find the particular model we are interested
