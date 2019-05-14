@@ -5357,6 +5357,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
+rxjs@^6.5.2:
+  version "6.5.2"
+  resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.5.2.tgz#2e35ce815cd46d84d02a209fb4e5921e051dbec7"
+  integrity sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
+  dependencies:
+    tslib "^1.9.0"
+
 safe-buffer@5.1.2, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
@@ -5537,25 +5544,21 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-siren-nav@2.0.0-alpha.3:
-  version "2.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/siren-nav/-/siren-nav-2.0.0-alpha.3.tgz#40ff489e66227263b97daaa35721b8649504ae65"
-  integrity sha512-4qUQNLC+GYdUkcMvbn6SO46yO+ZPsU6MLycgK90l5cMxNK72J9gIHloVq75i643LAwZ7tQdH15ECrdpzLcrD1w==
+siren-nav@2.0.0-alpha.5:
+  version "2.0.0-alpha.5"
+  resolved "https://registry.npmjs.org/siren-nav/-/siren-nav-2.0.0-alpha.5.tgz#be61427ead69e94d4f0c20ce543b07fd0856ea13"
+  integrity sha512-inmq3c6cf8ZhrOTFOEGjk2mJwiVB0+L/XGAtkdUFKAmls+ls2HGWUtw/4acJ2sK+tzWgNBVT1mczZb1oNnmanw==
   dependencies:
     axios "^0.16.0"
     debug "^3.1.0"
-    siren-types "1.0.0-rc4"
+    rxjs "^6.5.2"
+    siren-types "1.0.0-rc6"
     urijs "^1.19.1"
 
-siren-types@0.2.3:
-  version "0.2.3"
-  resolved "http://registry.npmjs.org/siren-types/-/siren-types-0.2.3.tgz#90d34bdce900011f8a0d1a3bcd9dea3a8cf0a9dc"
-  integrity sha1-kNNL3OkAAR+KDRo7zZ3qOozwqdw=
-
-siren-types@1.0.0-rc4:
-  version "1.0.0-rc4"
-  resolved "https://registry.npmjs.org/siren-types/-/siren-types-1.0.0-rc4.tgz#40c96d189d9834e5ffeb0810543488caadbeb60e"
-  integrity sha512-vkRB3rd7iraaYhaXHEemsMZnUJXStdf71NHjHb9+qkejpki/Z9aDmIBdnONgJVTCaiAEOlqyeosO915cmpHTJw==
+siren-types@1.0.0-rc6:
+  version "1.0.0-rc6"
+  resolved "https://registry.npmjs.org/siren-types/-/siren-types-1.0.0-rc6.tgz#edfe2c9b5e101dbd582092a998cf10dde4df0ef9"
+  integrity sha512-fgpsdnjDiPmUrAY4YV5UYZVjVMwXXsTfb51syr2rE3otk7I0XtWxr4UTa/BsSnlcNJrobcjWAbWFssJLe3+XCg==
 
 slash@^1.0.0:
   version "1.0.0"

@@ -8,8 +8,8 @@
         "lunr": "2.1.4",
         "mathjax-node-page": "1.4.1",
         "recharts": "^1.5.0",
-        "siren-nav": "2.0.0-alpha.3",
-        "siren-types": "0.2.3"
+        "siren-nav": "2.0.0-alpha.5",
+        "siren-types": "1.0.0-rc6"
     },
     "devDependencies": {
         "@babel/core": "^7.2.0",
