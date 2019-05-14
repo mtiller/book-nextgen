@@ -18,7 +18,16 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
     const maxSize = params.reduce((size, v) => (v.length > size ? v.length : size), 0);
     const labelWidth = 1 + (2 * maxSize) / 3;
     return (
-        <div style={{ paddingTop: 5, marginTop: "auto", marginBottom: "auto", minWidth: `${labelWidth + 5}em` }}>
+        <div
+            style={{
+                paddingTop: 5,
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "auto",
+                marginBottom: "auto",
+                minWidth: `${labelWidth + 5}em`,
+            }}
+        >
             <h4 style={{ marginTop: 5, marginBottom: 10 }}>Model Parameters</h4>
             {params.map(key => {
                 const v = props.modelData.vars[key];
