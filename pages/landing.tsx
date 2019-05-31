@@ -15,6 +15,11 @@ const choices: Choice[] = [
 export const LandingPage = (props: LandingPageData) => {
     return (
         <div>
+            <div style={{ float: "right" }}>
+                <p>
+                    <a href="http://modelicabyexample.globalcrown.com.cn/">国内镜像</a>
+                </p>
+            </div>
             <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
                 <img src="/static/images/TitleHeading.png" />
                 <h3 style={{ marginTop: 0 }}>by Dr. Michael M. Tiller</h3>
