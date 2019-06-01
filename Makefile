@@ -23,4 +23,4 @@ alias_release:
 	$(info Aliasing result to mbe.modelica.university)
 	@yarn alias_release -t $(NOW_TOKEN)
 	$(info Aliasing result to book.xogeny.com)
-	@yarn alias_book -t $(NOW_TOKEN)
+	@yarn alias_original -t $(NOW_TOKEN)
