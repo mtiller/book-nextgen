@@ -110,11 +110,8 @@ export const buyBook = (
             <div>
                 <p style={{ minWidth: "100%", width: 0 }}>
                     You can purchase both ePub, Mobi and PDF versions of the book in either letter or A4 format. Once
-                    you buy the book, you will be sent links to download the electronic versions. However, please note
-                    that <b>these links must be sent manually</b> by me once I receive purchase confirmation. I will
-                    respond as quickly as I can. But in some cases, I may not be available and it may take me as much as
-                    a day to respond. As new versions of the book become available, you will be sent updated links to
-                    the latest electronic versions.
+                    you buy the book, you will be redirected to a page that includes a <code>zip</code> file that
+                    contains all electronic formats.
                 </p>
                 <div className="payhip-embed-page" data-key="3zta">
                     ...
