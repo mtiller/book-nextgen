@@ -18,7 +18,7 @@ export const mailingList = (
                 </p>
                 <form
                     className="ui form validate"
-                    action="http://xogeny.us3.list-manage.com/subscribe/post?u=3bfc2e5430d32efbe641d6e58&amp;id=f260a85b89"
+                    action="https://xogeny.us3.list-manage.com/subscribe/post?u=3bfc2e5430d32efbe641d6e58&amp;id=f260a85b89"
                     method="post"
                     id="mc-embedded-subscribe-form"
                     name="mc-embedded-subscribe-form"
@@ -110,9 +110,10 @@ export const buyBook = (
             <div>
                 <p style={{ minWidth: "100%", width: 0 }}>
                     You can purchase both ePub, Mobi and PDF versions of the book in either letter or A4 format. Once
-                    you buy the book, you will be redirected to a page that includes a <code>zip</code> file that
+                    you <a href="https://payhip.com/b/3zta">buy the book</a>, you will be redirected to a page that includes a <code>zip</code> file that
                     contains all electronic formats.
                 </p>
+
                 <div className="payhip-embed-page" data-key="3zta">
                     ...
                 </div>

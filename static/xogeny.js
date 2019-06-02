@@ -1,6 +1,6 @@
 $(document).ready(function() {
     if (window.location.href.startsWith("https://book.xogeny.com")) {
-        window.location.href.replace("https://book.xogeny.com", "https://mbe.modelica.university");
+        window.location.replace("https://mbe.modelica.university");
     }
     /* Make the thumb button open and close the TOC */
     // $('#toc-sidebar').sidebar('attach events', '#thumb', 'toggle');

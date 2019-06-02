@@ -49,8 +49,6 @@ export default class MyDocument extends Document<PageData> {
                     <meta property="article:tag" content="modeling" />
                     <meta property="article:tag" content="simulation" />
 
-                    <script type="text/javascript" src="https://payhip.com/embed-page.js" />
-
                     <meta name="twitter:card" content="summary" />
                     <meta name="twitter:url" content="https://mbe.modelica.university/" />
                     <meta name="twitter:title" content="Modelica by Example" />
@@ -104,6 +102,7 @@ export default class MyDocument extends Document<PageData> {
                     <Main />
                     <NextScript />
                     <script type="text/javascript" src="/static/xogeny.js" />
+                    <script type="text/javascript" src="https://payhip.com/embed-page.js" />
                 </body>
             </html>
         );
