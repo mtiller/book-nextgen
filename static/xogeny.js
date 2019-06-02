@@ -1,7 +1,16 @@
+/**
+ * As soon as possible (we are not waiting for the page load to complete here), check if the page being
+ * loaded is hosted from https://book.xogeny.com
+ */
+if (window.location.href.startsWith("https://book.xogeny.com")) {
+	/**
+	 * If so, replace "https://book.xogeny.com" with "https://mbe.modelica.university" and then change the location
+	 * of the browser to that URL.  This **replaces** the book.xogeny.com URL in the browser history effectively
+	 * erasing any visit to book.xogeny.com.
+	 */
+	window.location.replace(window.location.href.replace("https://book.xogeny.com", "https://mbe.modelica.university"));
+}
 $(document).ready(function() {
-    if (window.location.href.startsWith("https://book.xogeny.com")) {
-        window.location.replace("https://mbe.modelica.university");
-    }
     /* Make the thumb button open and close the TOC */
     // $('#toc-sidebar').sidebar('attach events', '#thumb', 'toggle');
 
