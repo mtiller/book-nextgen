@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, FormGroup, InputGroup } from "@blueprintjs/core";
+import { Button, FormGroup, InputGroup, Intent, AnchorButton } from "@blueprintjs/core";
 
 export const mailingList = (
     <div>
@@ -52,7 +52,7 @@ const questions: Question[] = [
     {
         question: 'What do you mean by "pay what you can"?',
         answer:
-            "It means that I want people to learn Modelica in an affordable way. If you are a college student, you can read the HTML version for free or spend $5 and get the electronic versions of the book, too. If you are a professional engineer, you could probably afford to pay at $20 or so for a book tied closely to your professional activities.  Ultimately, it is up to you to decide what the book is worth to you.",
+            "It means that I want people to learn Modelica in an affordable way. If you are a college student, you can read the HTML version for free or spend $5 and get the electronic versions of the book, too. If you are a professional engineer, you could probably afford to pay around $20 or so for a book tied closely to your professional activities.  Ultimately, it is up to you to decide what the book is worth to you.  I impose a minimum amount of $3 because otherwise fees tend to swallow all the income.",
     },
     {
         question: "What happens if a newer version comes out?",
@@ -108,22 +108,27 @@ export const buyBook = (
     <div>
         <div>
             <div>
+                <p>
+                    The pricing of the book is "pay what you can". However, I've had issues with people paying so little
+                    that, given various fees, the net income for me is $0 (<i>i.e.,</i> the only people making money on
+                    this are PayPal, Stripe, PayHip, <i>etc</i>).
+                </p>
+                <p>
+                    So, I've configured the payment system to require a minimum payment of $3 (although you can specify
+                    any amount above that). If, for some reason, this is too much of a financial burden for you, feel
+                    free to contact me.
+                </p>
+
                 <p style={{ minWidth: "100%", width: 0 }}>
                     You can purchase both ePub, Mobi and PDF versions of the book in either letter or A4 format. Once
-                    you <a href="https://payhip.com/b/3zta">buy the book</a>, you will be redirected to a page that
-                    includes a <code>zip</code> file that contains all electronic formats.
+                    you <a href="https://payhip.com/buy?link=3zta">buy the book</a>, you will be redirected to a page
+                    that includes a <code>zip</code> file that contains all electronic formats.
                 </p>
 
-                <p>
-                    The pricing of the book is "pay what you can".  However, I've had issues with people paying so little that,
-                    given various fees, the net income for me is $0 (the only people making money on this are PayPal, Stripe, PayHip, etc).
-                    So, I've configured the payment system to require a minimum payment of $3 (although you can specify any amount above that).
-                    If, for some reason, this is too much of a financial burden for you, feel free to contact me.
-                </p>
-
-                <div className="payhip-embed-page" data-key="3zta">
-                    <b>Note</b>: You appear to be running "ad blocking" software so we cannot embed the book purchase widget.  But you
-                    can <a href="https://payhip.com/b/3zta">follow this link to buy the book directly from PayHip</a>.
+                <div style={{ display: "flex", justifyContent: "space-around" }}>
+                    <AnchorButton href="https://payhip.com/buy?link=3zta" intent={Intent.SUCCESS}>
+                        Buy Book
+                    </AnchorButton>
                 </div>
             </div>
         </div>
