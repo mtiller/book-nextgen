@@ -114,6 +114,13 @@ export const buyBook = (
                     includes a <code>zip</code> file that contains all electronic formats.
                 </p>
 
+                <p>
+                    The pricing of the book is "pay what you can".  However, I've had issues with people paying so little that,
+                    given various fees, the net income for me is $0 (the only people making money on this are PayPal, Stripe, PayHip, etc).
+                    So, I've configured the payment system to require a minimum payment of $3 (although you can specify any amount above that).
+                    If, for some reason, this is too much of a financial burden for you, feel free to contact me.
+                </p>
+
                 <div className="payhip-embed-page" data-key="3zta">
                     <b>Note</b>: You appear to be running "ad blocking" software so we cannot embed the book purchase widget.  But you
                     can <a href="https://payhip.com/b/3zta">follow this link to buy the book directly from PayHip</a>.
