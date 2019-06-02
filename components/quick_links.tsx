@@ -115,8 +115,8 @@ export const buyBook = (
                 </p>
 
                 <div className="payhip-embed-page" data-key="3zta">
-                    You are probably running "ad blocking" software so we cannot embed the book purchase widget.  But you
-                    can <a href="https://payhip.com/b/3zta">follow this link</a> to buy the book directly from PayHip.
+                    <b>Note</b>: You appear to be running "ad blocking" software so we cannot embed the book purchase widget.  But you
+                    can <a href="https://payhip.com/b/3zta">follow this link to buy the book directly from PayHip</a>.
                 </div>
             </div>
         </div>
