@@ -110,12 +110,13 @@ export const buyBook = (
             <div>
                 <p style={{ minWidth: "100%", width: 0 }}>
                     You can purchase both ePub, Mobi and PDF versions of the book in either letter or A4 format. Once
-                    you <a href="https://payhip.com/b/3zta">buy the book</a>, you will be redirected to a page that includes a <code>zip</code> file that
-                    contains all electronic formats.
+                    you <a href="https://payhip.com/b/3zta">buy the book</a>, you will be redirected to a page that
+                    includes a <code>zip</code> file that contains all electronic formats.
                 </p>
 
                 <div className="payhip-embed-page" data-key="3zta">
-                    ...
+                    You are probably running "ad blocking" software so we cannot embed the book purchase widget.  But you
+                    can <a href="https://payhip.com/b/3zta">follow this link</a> to buy the book directly from PayHip.
                 </div>
             </div>
         </div>
