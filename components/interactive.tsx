@@ -10,7 +10,13 @@ const billboardUrl = "https://mbe-api.modelica.university";
 // const billboardUrl = "http://localhost:3010";
 
 const nav = SirenNav.create(billboardUrl);
-export const Interactive = (props: { id: string; content: JSX.Element }) => {
+
+export interface InteractiveProps {
+    id: string;
+    content: JSX.Element;
+}
+
+export const Interactive = (props: InteractiveProps) => {
     const [modelData, setModelData] = useState<null | Entity<ModelData>>(null);
     const [modelNav, setModelNav] = useState<null | SirenNav>(null);
     const [running, setRunning] = useState<boolean>(false);
@@ -50,7 +56,7 @@ export const Interactive = (props: { id: string; content: JSX.Element }) => {
         fetchDetails();
     }, [billboardUrl, props.id]);
     return (
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+        <div id={`figure-${props.id}`} style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
             <div style={{ flexGrow: 1, flexBasis: 0, display: "flex" }}>
                 {modelData ? (
                     <ParameterPanel running={running} onRun={runSimulation} modelData={modelData.properties} />
