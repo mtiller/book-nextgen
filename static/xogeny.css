@@ -186,14 +186,6 @@ a.headerlink:hover {
     color: #106ba3;
 }
 
-a.figurelink {
-    display: none;
-}
-
-a.figurelink:hover {
-    display: block;
-}
-
 .pull-right {
     float: right;
     margin-right: 20px;

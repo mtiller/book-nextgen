@@ -1,8 +1,10 @@
 import { ModelData } from "../src/types";
 import { useState } from "react";
 import { FormGroup, Intent, Tooltip, InputGroup, Button } from "@blueprintjs/core";
+import { FigureLink } from "./quick_links";
 
 export interface ParameterPanelProps {
+    figureId: string;
     running: boolean;
     onRun: (params: { [key: string]: string }) => void;
     modelData: ModelData;
@@ -28,7 +30,10 @@ export const ParameterPanel = (props: ParameterPanelProps) => {
                 minWidth: `${labelWidth + 5}em`,
             }}
         >
-            <h4 style={{ marginTop: 5, marginBottom: 10 }}>Model Parameters</h4>
+            <h4 style={{ marginTop: 5, marginBottom: 10 }}>
+                Model Parameters
+                <FigureLink id={props.figureId} />
+            </h4>
             {params.map(key => {
                 const v = props.modelData.vars[key];
                 return (
