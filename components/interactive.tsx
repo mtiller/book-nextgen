@@ -58,7 +58,7 @@ export const Interactive = (props: InteractiveProps) => {
     }, [billboardUrl, props.id]);
     return (
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-            <a id={figureId} style={{ marginTop: "-32px" }} />
+            <a id={figureId} style={{ marginTop: "-48px" }} />
             <div style={{ flexGrow: 1, flexBasis: 0, display: "flex" }}>
                 {modelData ? (
                     <ParameterPanel
