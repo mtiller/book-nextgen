@@ -49,7 +49,7 @@ export const Interactive = (props: InteractiveProps) => {
         }
     };
 
-    // TODO: Go to billboard, find the particular model we are interested
+    // Go to billboard, find the particular model we are interested
     // in (by id), download the model information (parameters, etc) to render in
     // the application and also the action to trigger for simulation.
 
@@ -57,7 +57,8 @@ export const Interactive = (props: InteractiveProps) => {
         fetchDetails();
     }, [billboardUrl, props.id]);
     return (
-        <div id={figureId} style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+            <a id={figureId} style={{ marginTop: "-32px" }} />
             <div style={{ flexGrow: 1, flexBasis: 0, display: "flex" }}>
                 {modelData ? (
                     <ParameterPanel
