@@ -20,9 +20,21 @@ export const LandingPage = (props: LandingPageData) => {
                     <a href="http://modelicabyexample.globalcrown.com.cn/">国内镜像</a>
                 </p>
             </div>
-            <div style={{ width: "100%", textAlign: "center", marginTop: "5px" }}>
+            <div
+                itemScope
+                itemType="http://schema.org/Book"
+                style={{ width: "100%", textAlign: "center", marginTop: "5px" }}
+            >
+                <span style={{ display: "none" }} itemProp="name">
+                    Modelica by Example
+                </span>
                 <img src="/static/images/TitleHeading.png" />
-                <h3 style={{ marginTop: 0 }}>by Dr. Michael M. Tiller</h3>
+                <h3 style={{ marginTop: 0 }}>
+                    by{" "}
+                    <span itemProp="author" itemScope itemType="http://schema.org/Person">
+                        Dr. Michael M. Tiller
+                    </span>
+                </h3>
             </div>
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, width: "55vw" }}>
