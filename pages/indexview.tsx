@@ -82,9 +82,6 @@ export default class IndexView extends React.Component<IndexPageData> {
                             const size = column.reduce((p, c) => p + columns.sizes[c.category], 0);
                             return (
                                 <div key={i} style={{ minWidth: 300 }}>
-                                    {/* <p>
-                                        Size: {size}/{columns.collen} (of {columns.total})
-                                    </p> */}
                                     {column.map((e, i) => (
                                         <RenderTree key={i} node={e} depth={0} />
                                     ))}

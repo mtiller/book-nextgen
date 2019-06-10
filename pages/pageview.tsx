@@ -25,6 +25,22 @@ export default class PageView extends React.Component<PageData> {
                     titles={props.titles}
                     toc={props.toc}
                 />
+                <div style={{ float: "right", marginRight: "20px" }}>
+                    <p>
+                        <a href="https://github.com/mtiller/ModelicaBook">
+                            <img
+                                style={{ width: "1em", verticalAlign: "middle" }}
+                                src="/static/images/GitHub-Mark-64px.png"
+                            />
+                        </a>
+                        <span>
+                            {" "}
+                            Found an issue with the book? Report it on{" "}
+                            <a href="https://github.com/mtiller/ModelicaBook/issues">Github.</a>
+                        </span>
+                    </p>
+                </div>
+
                 <YouAreHere {...props} />
 
                 <div style={{ margin: 20 }}>

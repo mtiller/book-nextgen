@@ -40,6 +40,19 @@ export const LandingPage = (props: LandingPageData) => {
                         <span itemProp="name">Michael M. Tiller</span>
                     </span>
                 </h3>
+                <p>
+                    <a href="https://github.com/mtiller/ModelicaBook">
+                        <img
+                            style={{ width: "1em", verticalAlign: "middle" }}
+                            src="/static/images/GitHub-Mark-64px.png"
+                        />
+                    </a>
+                    <span>
+                        {" "}
+                        Found an issue with the book? Report it on{" "}
+                        <a href="https://github.com/mtiller/ModelicaBook/issues">Github.</a>
+                    </span>
+                </p>
             </div>
             <div style={{ display: "flex" }}>
                 <Card elevation={Elevation.TWO} style={{ margin: 10, width: "55vw" }}>
