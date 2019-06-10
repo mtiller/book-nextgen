@@ -16,7 +16,7 @@ export default class PageView extends React.Component<PageData> {
         const body = props.page.body;
 
         return (
-            <div>
+            <div itemScope itemType="http://schema.org/Chapter">
                 <Heading
                     next={props.page.next}
                     prev={props.page.prev}
@@ -28,6 +28,16 @@ export default class PageView extends React.Component<PageData> {
                 <YouAreHere {...props} />
 
                 <div style={{ margin: 20 }}>
+                    <span itemProp="name" style={{ display: "none" }}>
+                        {props.page.title}
+                    </span>
+                    <link
+                        style={{ display: "none" }}
+                        itemProp="isPartOf"
+                        itemScope
+                        itemType="http://schema.org/Book"
+                        itemID="https://mbe.modelica.university"
+                    />
                     <Reactify html={body} injectors={[interactiveInjector, sourceViewInjector]} />
                 </div>
             </div>

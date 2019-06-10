@@ -23,16 +23,21 @@ export const LandingPage = (props: LandingPageData) => {
             <div
                 itemScope
                 itemType="http://schema.org/Book"
+                itemID="https://mbe.modelica.university"
                 style={{ width: "100%", textAlign: "center", marginTop: "5px" }}
             >
                 <span style={{ display: "none" }} itemProp="name">
                     Modelica by Example
                 </span>
+                <span style={{ display: "none" }} itemProp="version">
+                    {props.global.release}
+                </span>
                 <img src="/static/images/TitleHeading.png" />
                 <h3 style={{ marginTop: 0 }}>
                     by{" "}
                     <span itemProp="author" itemScope itemType="http://schema.org/Person">
-                        Dr. Michael M. Tiller
+                        Dr.
+                        <span itemProp="name">Michael M. Tiller</span>
                     </span>
                 </h3>
             </div>
