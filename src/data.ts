@@ -1,4 +1,4 @@
-import { NextContext } from "next";
+import { NextPageContext } from "next";
 import {
     PageData,
     IndexPageData,
@@ -10,14 +10,14 @@ import {
     LandingPageData,
 } from "./types";
 
-function get(key: string, context: NextContext): string {
+function get(key: string, context: NextPageContext): string {
     const val = context.query[key];
     if (typeof val === "string") return val;
     if (Array.isArray(val)) return val[0];
     throw new Error(`${val} was not a string or array of strings`);
 }
 
-export async function getInitialPageProps(context: NextContext): Promise<PageData> {
+export async function getInitialPageProps(context: NextPageContext): Promise<PageData> {
     const page = parseFJSon<SphinxPage>(context.query, "page");
     const global = parseFJSon<GlobalData>(context.query, "global");
     const titles = parseFJSon<{ [href: string]: string }>(context.query, "titles");
@@ -29,13 +29,13 @@ export async function getInitialPageProps(context: NextContext): Promise<PageDat
     };
 }
 
-export async function getInitialLandingPageProps(context: NextContext): Promise<LandingPageData> {
+export async function getInitialLandingPageProps(context: NextPageContext): Promise<LandingPageData> {
     const pageData = await getInitialPageProps(context);
     const sponsors = parseFJSon<Sponsors>(context.query, "sponsors");
     return { ...pageData, sponsors: sponsors };
 }
 
-export async function getInitialIndexProps(context: NextContext): Promise<IndexPageData> {
+export async function getInitialIndexProps(context: NextPageContext): Promise<IndexPageData> {
     const index = parseFJSon<IndexData>(context.query, "index");
     const global = parseFJSon<GlobalData>(context.query, "global");
     const titles = parseFJSon<{ [href: string]: string }>(context.query, "titles");

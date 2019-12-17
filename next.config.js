@@ -1,5 +1,4 @@
 // next.config.js
-const withTypescript = require("@zeit/next-typescript");
 const withCSS = require("@zeit/next-css");
 var fs = require("fs");
 var path = require("path");
@@ -97,9 +96,9 @@ async function getPages() {
 }
 
 module.exports = withCSS(
-    withTypescript({
+    {
         useFileSystemPublicRoutes: false,
-        exportPathMap: async defaultPathMap => {
+        exportPathMap: async () => {
             const globalData = await getData("globalcontext.json");
             const sponsorData = await getData("_static/sponsors/sponsors.json");
             const titles = {};
@@ -172,5 +171,5 @@ module.exports = withCSS(
             // console.log("ret = " + JSON.stringify(ret));
             return ret;
         },
-    }),
+    }
 );

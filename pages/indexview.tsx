@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IndexPageData, IndexNode } from "../src/types";
 import { RenderTree } from "../components";
-import { NextContext } from "next";
+import { NextPageContext } from "next";
 import { getInitialIndexProps } from "../src/data";
 import { Heading } from "../components/heading";
 
@@ -58,7 +58,7 @@ function formColumns(entries: IndexNode[]) {
  * This is the component that renders the index
  */
 export default class IndexView extends React.Component<IndexPageData> {
-    static getInitialProps(context: NextContext) {
+    static getInitialProps(context: NextPageContext) {
         return getInitialIndexProps(context);
     }
     render() {

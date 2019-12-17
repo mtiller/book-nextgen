@@ -1,5 +1,3 @@
-import { RouterProps } from "next/router";
-
 export interface VariableDetails {
     style: "-" | "-." | ".";
     scale: number;
@@ -80,10 +78,6 @@ export interface SponsorData {
     profile: string;
     link: string;
     logo: string;
-}
-
-export interface PageProps<Q> {
-    router: RouterProps<Q>;
 }
 
 export interface SphinxLink {

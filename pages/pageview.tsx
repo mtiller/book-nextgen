@@ -1,5 +1,5 @@
 import React from "react";
-import { NextContext } from "next";
+import { NextPageContext } from "next";
 import { PageData } from "../src/types";
 import { getInitialPageProps } from "../src/data";
 import { Heading } from "../components/heading";
@@ -8,7 +8,7 @@ import { interactiveInjector, sourceViewInjector } from "../injectors";
 import { YouAreHere } from "../components/breadcrumbs";
 
 export default class PageView extends React.Component<PageData> {
-    static getInitialProps(context: NextContext) {
+    static getInitialProps(context: NextPageContext) {
         return getInitialPageProps(context);
     }
     render() {

@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
 import { LandingPageData } from "../src/types";
-import { Choices, Choice } from "../components/choices";
-import { mailingList, faqs, buyBook } from "../components/quick_links";
-import { SponsorView } from "../components/sponsors";
-import { SearchDialog } from "../components/search";
+import { Choices, Choice } from "./choices";
+import { mailingList, faqs, buyBook } from "./quick_links";
+import { SponsorView } from "./sponsors";
+import { SearchDialog } from "./search";
 
 const choices: Choice[] = [
     { title: "Sign up for mailing list", contents: mailingList },

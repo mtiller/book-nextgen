@@ -1,5 +1,5 @@
 import React from "react";
-import { LandingPage } from "./landing";
+import { LandingPage } from "../components/landing";
 import { LandingPageData } from "../src/types";
 import { getInitialLandingPageProps } from "../src/data";
 
