@@ -24,7 +24,7 @@
         "now": "^15.0.1",
         "react": "16.8.0",
         "react-dom": "16.8.0",
-        "serve": "^10.1.1",
+        "serve": "^10.1.2",
         "typescript": "^3.2.1"
     },
     "name": "@xogeny/book-nextgen",
