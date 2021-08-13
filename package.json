@@ -20,7 +20,7 @@
         "@types/react-dom": "^16.8.3",
         "@types/recharts": "^1.1.16",
         "@zeit/next-css": "^1.0.1",
-        "next": "^7.0.2",
+        "next": "^11.1.0",
         "now": "^15.0.1",
         "react": "16.8.0",
         "react-dom": "16.8.0",
