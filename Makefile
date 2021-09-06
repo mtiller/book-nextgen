@@ -1,4 +1,4 @@
-publish_site:
+position_files:
 	-rm -rf json
 	-rm -rf static/_images
 	-rm -rf static/sponsors
@@ -10,6 +10,11 @@ publish_site:
 	yarn index
 	yarn build
 	yarn export
+
+docker_image: position_files
+	docker build . -t mtiller/book-content
+
+publish_site: position_files
 	$(info Uploading to ZEIT Now)
 	@yarn upload -t $(NOW_TOKEN)
 
