@@ -20,7 +20,6 @@
         "@types/react-dom": "^16.8.3",
         "@types/recharts": "^1.1.16",
         "@zeit/next-css": "^1.0.1",
-        "netlify-cli": "^16.2.0",
         "next": "^7.0.2",
         "react": "16.8.0",
         "react-dom": "16.8.0",

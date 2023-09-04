@@ -15,7 +15,7 @@ const choices: Choice[] = [
 export const LandingPage = (props: LandingPageData) => {
   return (
     <div>
-      <div style={{ float: "right" }}>
+      <div style={{ float: "right", paddingRight: "10px" }}>
         <div className="bp3-button-group .modifier">
           <a
             className="bp3-button"
