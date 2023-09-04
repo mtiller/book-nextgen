@@ -20,8 +20,8 @@
         "@types/react-dom": "^16.8.3",
         "@types/recharts": "^1.1.16",
         "@zeit/next-css": "^1.0.1",
+        "netlify-cli": "^16.2.0",
         "next": "^7.0.2",
-        "now": "^15.0.1",
         "react": "16.8.0",
         "react-dom": "16.8.0",
         "serve": "^10.1.1",
@@ -35,15 +35,12 @@
         "dev": "next",
         "build": "next build",
         "export": "next export",
-        "alias_preview": "now alias https://nextgen-book.michaeltiller.now.sh mbe-preview.modelica.university",
-        "alias_beta": "now alias https://nextgen-book.michaeltiller.now.sh beta.book.xogeny.com",
-        "alias_release": "now alias https://nextgen-book.michaeltiller.now.sh mbe.modelica.university",
-        "alias_original": "now alias https://nextgen-book.michaeltiller.now.sh book.xogeny.com",
         "start": "next start",
-        "serve": "yarn build && yarn export && serve out",
+        "serve": "yarn build && yarn export && serve dist",
         "index": "node buildIndex.js",
-        "now-build": "next build && next export -o dist",
-        "upload": "now",
+        "en-build": "next build && next export -o dist",
+        "kr-build": "next build && next export --basePath /kr -o dist/kr",
+        "deploy": "netlify deploy --prod --dir=dist",
         "test": "jest"
     },
     "repository": {
@@ -54,7 +51,7 @@
         "Sphinx"
     ],
     "author": "Michael M. Tiller",
-    "license": "UNLICENSED",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/xogeny/book-nextgen/issues"
     },
