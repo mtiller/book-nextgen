@@ -17,12 +17,12 @@ export const LandingPage = (props: LandingPageData) => {
         <div>
             <div style={{ float: "right" }}>
                 <p>
-                    <a href="http://modelicabyexample.globalcrown.com.cn/">国内镜像</a>
+                    <a href="https://modelicabyexample.globalcrown.com.cn/">国内镜像</a>
                 </p>
             </div>
             <div
                 itemScope
-                itemType="http://schema.org/Book"
+                itemType="https://schema.org/Book"
                 itemID="https://mbe.modelica.university"
                 style={{ width: "100%", textAlign: "center", marginTop: "5px" }}
             >
@@ -35,7 +35,7 @@ export const LandingPage = (props: LandingPageData) => {
                 <img src="/static/images/TitleHeading.png" />
                 <h3 style={{ marginTop: 0 }}>
                     by{" "}
-                    <span itemProp="author" itemScope itemType="http://schema.org/Person">
+                    <span itemProp="author" itemScope itemType="https://schema.org/Person">
                         Dr.
                         <span itemProp="name">Michael M. Tiller</span>
                     </span>

@@ -109,7 +109,7 @@ const questions: Question[] = [
                 At the moment, there is no print version of the book. Our goal is to incorporate all the feedback we
                 receive on the HTML version of the book before making a print version. We want to avoid situations where
                 the print version becomes obsolete compared to the electronic versions. We do plan to produce a print
-                version. So, please subscribe to our <a href="http://eepurl.com/PAEKj">mailing list</a> to be informed
+                version. So, please subscribe to our <a href="https://eepurl.com/PAEKj">mailing list</a> to be informed
                 when the print version becomes available.
             </span>
         ),
